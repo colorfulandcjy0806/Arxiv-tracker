@@ -13,7 +13,7 @@ on:
 
   # 定时触发：每天 19:00 UTC = 北京时间次日 03:00
   schedule:
-    - cron: "0 19 * * *"
+    - cron: "0 2 * * *"
 
 concurrency:
   group: arxiv-digest
