@@ -8,6 +8,10 @@ keywords:
   - "training-free"
   - "training free"
 
+# exclude_keywords: # 选择排除的关键词
+#   - "Large Language Model"
+#   - "LLM"
+  
 logic: "AND"                 # 组间逻辑：categories 与 keywords 间 AND/OR
 max_results: 30
 sort_by: "lastUpdatedDate"  # 还可以是submittedDate 建议改成lastUpdatedDate按更新时间排，能捞到v2/v3的“新增”
