@@ -35,14 +35,14 @@
 
 ## 📰 News
 
+- **2025-12-12**: Support the exclusion of unwanted literature through keywords.
+- **2025-09-15**: Add code link completion. First, crawl the GitHub/Code link from the comments/summary/arXiv page; If it is still missing, you can scan the PDF homepage to try to identify the link and alleviate the problem of "incomplete display of GitHub code".
 - **2025-08-25**
   - Added **Freshness + persistent dedup** (write to `seen.json` only after a successful output).
   - Added **OpenAI-Compatible LLM**: besides DeepSeek, now works with **SiliconFlow** (e.g., `Qwen/Qwen3-8B`).
   - Fixed a bug that **could send duplicate emails**; added Actions **concurrency guard** and a **manual-send toggle**.
   - Introduced **auto pagination** to avoid reusing the same batch.
 - **2025-08-22**: First public release (search → summarize/translate → email/web).
-- **2025-09-15**: Add code link completion. First, crawl the GitHub/Code link from the comments/summary/arXiv page; If it is still missing, you can scan the PDF homepage to try to identify the link and alleviate the problem of "incomplete display of GitHub code".
-
 ---
 
 ## 🧭 Repository Layout
@@ -178,6 +178,10 @@ categories: ["cs.CV", "cs.LG", "cs.AI"]
 keywords:
   - "open vocabulary segmentation"
   - "vision-language grounding"
+# [New] Exclude papers containing these terms
+exclude_keywords:
+  - "Large Language Model"
+  - "Generative AI"
 logic: "AND"                 # categories (OR) combined with keywords (OR) by AND/OR
 max_results: 100             # per-page cap; the runner auto-paginates internally
 sort_by: "lastUpdatedDate"   # or submittedDate
@@ -295,6 +299,7 @@ python -m arxiv_tracker.cli run --config config.yaml --site-dir docs --verbose
 - [x] Bug of sending 2 emails each time
 - [x] Support more LLMs, next step to consider silicon-based flow APIs
 - [x] Code link completion (when missing, grab the PDF homepage as a backup)
+- [x] Logic to exclude specific keywords (e.g., filtering out "LLM" noise).
 - [ ] More site themes (dark color, following system)
 - [ ] Custom card field switch and order
 
