@@ -34,14 +34,14 @@
 ---
 
 ## 📰 News
-
+- **2025-12-12**：支持通过关键词排除不想要的文献。
+- **2025-09-15**：新增代码链接补全，先从 comments/summary/arXiv 页面 抓取 GitHub/Code 链接；若仍缺失，可选扫描 PDF 首页尝试识别链接，缓解 “github code 显示不全” 问题。
 - **2025-08-25**
   - 新增 **Freshness + 去重持久化**（且仅在**成功输出**后写入 `seen.json`）。
   - 新增 **OpenAI-Compatible LLM**：除 DeepSeek 外，已验证可直连 **SiliconFlow** 免费/付费模型（示例：`Qwen/Qwen3-8B`）。
   - 修复“**可能重复发邮件**”的问题；补充 Actions **并发防重**与“**手动触发选择是否发信**”。
   - 新增 **自动分页抓取**，避免总是命中同一批条目。
 - **2025-08-22**：完成初版（检索 → 摘要/翻译 → 邮件/网页）。
-- **2025-09-15**：新增代码链接补全，先从 comments/summary/arXiv 页面 抓取 GitHub/Code 链接；若仍缺失，可选扫描 PDF 首页尝试识别链接，缓解 “github code 显示不全” 问题。
 ---
 
 ## 🧭 仓库结构
@@ -179,6 +179,10 @@ categories: ["cs.CV", "cs.LG", "cs.AI"]
 keywords:
   - "open vocabulary segmentation"
   - "vision-language grounding"
+# [新增] 排除包含以下词汇的论文
+exclude_keywords:
+  - "Large Language Model"
+  - "Generative AI"
 logic: "AND"                 # 左：分类集合 (OR)；右：关键词集合 (OR)；二者再 AND/OR
 max_results: 100             # 每页抓取上限（内部支持自动分页累计）
 sort_by: "lastUpdatedDate"   # 或 submittedDate
@@ -294,7 +298,8 @@ python -m arxiv_tracker.cli run --config config.yaml --site-dir docs --verbose
 - [x] 解决每天检索到的文献都一样的问题
 - [x] 每次会发送2封邮件的bug
 - [x] 代码链接补全（缺失时抓取 PDF 首页作为兜底）
-- [x] 支持更多LLM，下一步考虑硅基流动的API 
+- [x] 支持更多LLM，下一步考虑硅基流动的API
+- [x] 支持排除特定关键词（如过滤 LLM 泛滥的论文）
 - [ ] 更多站点主题（暗色、跟随系统） 
 - [ ] 自定义卡片字段开关与顺序 
 
