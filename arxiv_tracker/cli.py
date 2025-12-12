@@ -80,6 +80,7 @@ def cli():
 @click.option("--config", "config_path", type=click.Path(exists=True), help="配置文件路径（YAML）")
 @click.option("--categories", multiple=True, help="学科分类，可多次或逗号分隔")
 @click.option("--keywords", multiple=True, help="关键词，可多次或逗号分隔")
+@click.option("--exclude-keywords", multiple=True, help="排除关键词，可多次或逗号分隔") 
 @click.option("--logic", type=click.Choice(["AND", "OR"], case_sensitive=False), default=None)
 @click.option("--max-results", type=int, default=None)
 @click.option("--sort-by", type=click.Choice(["submittedDate", "lastUpdatedDate"]), default=None)
@@ -99,7 +100,7 @@ def cli():
 @click.option("--site-url", default=None, help="站点首页 URL（用于邮件正文链接）")
 @click.option("--no-email", is_flag=True, help="跳过邮件发送（用于重试）")
 
-def run(config_path, categories, keywords, logic, max_results, sort_by, sort_order,
+def run(config_path, categories, keywords, exclude_keywords, logic, max_results, sort_by, sort_order,
         lang, summary_mode, summary_scope, email_enabled, email_detail, email_max_items,
         out_dir, verbose, translate_enabled, translate_lang, pdf_enabled, no_email: bool,
         site_dir, site_url):
@@ -111,8 +112,10 @@ def run(config_path, categories, keywords, logic, max_results, sort_by, sort_ord
         cfg = Settings.from_file(config_path) if config_path else Settings()
         cats = _split_categories(categories)
         keys = _split_keywords(keywords)
+        ex_keys = _split_keywords(exclude_keywords)
         cfg.merge_cli(categories=cats or None,
                       keywords=keys or None,
+                      exclude_keywords=ex_keys or None,
                       logic=(logic or cfg.logic),
                       max_results=(max_results or cfg.max_results),
                       sort_by=(sort_by or cfg.sort_by),
@@ -185,8 +188,7 @@ def run(config_path, categories, keywords, logic, max_results, sort_by, sort_ord
                 return datetime.fromisoformat(s).astimezone(timezone.utc)
             except Exception:
                 return None
-
-        q = build_search_query(cfg.categories, cfg.keywords, cfg.logic)
+        q = build_search_query(cfg.categories, cfg.keywords, cfg.exclude_keywords, cfg.logic)
         click.echo("[Query] {}".format(q))
 
         # 读取已见集合（兼容 list / {"ids":[...]} / {id: timestamp} 三种格式）
