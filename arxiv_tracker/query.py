@@ -49,30 +49,42 @@ def _kw_group(kw: str) -> str:
 
     return "(" + " OR ".join(parts) + ")"
 
-def build_search_query(categories: List[str], keywords: List[str], logic: str = "AND") -> str:
-    """
+def build_search_query(categories: List[str], keywords: List[str], exclude_keywords: List[str] = None, logic: str = "AND") -> str:    """
     生成 arXiv API 的 search_query 字符串。
     - categories: ["cs.CV","cs.LG"] -> (cat:cs.CV OR cat:cs.LG)
     - keywords:   每个 kw 变成一个 _kw_group，关键词之间用 OR 连接
     - 组间逻辑：cat_group (AND/OR) kw_group
+    - 结构: (正面查询) AND NOT (负面查询)
     """
     cats = [c.strip() for c in (categories or []) if c and c.strip()]
     keys = [k.strip() for k in (keywords or []) if k and k.strip()]
+    excs = [e.strip() for e in (exclude_keywords or []) if e and e.strip()] 
+    
     cat_q = ""
     key_q = ""
+    exc_q = "" 
 
     if cats:
         cat_q = "(" + " OR ".join(f"cat:{c}" for c in cats) + ")"
     if keys:
         key_q = "(" + " OR ".join(_kw_group(k) for k in keys) + ")"
-
+        
+    if excs:
+        # 复用 _kw_group 逻辑，也可以只做简单匹配。这里复用逻辑以支持变体。
+        # 意思为: NOT ( ("LLM"在标题/摘要) OR ("Large Language Model"在标题/摘要) )
+        exc_q = " AND NOT (" + " OR ".join(_kw_group(e) for e in excs) + ")"
+        
+    # 构建正面查询部分
+    positive_q = ""
     if cat_q and key_q:
         op = "AND" if (logic or "AND").upper() == "AND" else "OR"
-        return f"{cat_q} {op} {key_q}"
+        positive_q = f"({cat_q} {op} {key_q})"
     elif cat_q:
-        return cat_q
+        positive_q = cat_q
     elif key_q:
-        return key_q
+        positive_q = key_q
     else:
-        # 没给任何条件就回到全站（不建议）
-        return "all:*"
+        positive_q = "all:*"
+
+    # 最终拼接
+    return positive_q + exc_q
