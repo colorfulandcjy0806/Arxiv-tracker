@@ -49,7 +49,8 @@ def _kw_group(kw: str) -> str:
 
     return "(" + " OR ".join(parts) + ")"
 
-def build_search_query(categories: List[str], keywords: List[str], exclude_keywords: List[str] = None, logic: str = "AND") -> str:    """
+def build_search_query(categories: List[str], keywords: List[str], exclude_keywords: List[str] = None, logic: str = "AND") -> str:    
+    """
     生成 arXiv API 的 search_query 字符串。
     - categories: ["cs.CV","cs.LG"] -> (cat:cs.CV OR cat:cs.LG)
     - keywords:   每个 kw 变成一个 _kw_group，关键词之间用 OR 连接
