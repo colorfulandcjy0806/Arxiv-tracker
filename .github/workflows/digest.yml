@@ -67,9 +67,9 @@ jobs:
       - name: Compute Pages URL
         id: site
         run: |
-          REPO="${ssrfwanjun/Arxiv-tracker}"    # owner/repo
-          OWNER="ssrfwanjun"
-          NAME="Arxiv-tracker"
+          REPO="${GITHUB_REPOSITORY}"    # owner/repo
+          OWNER="${REPO%%/*}"
+          NAME="${REPO#*/}"
           echo "url=https://${OWNER}.github.io/${NAME}/" >> $GITHUB_OUTPUT
 
       # 一次性检查邮箱变量注入是否OK
