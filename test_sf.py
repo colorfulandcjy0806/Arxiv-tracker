@@ -1,9 +1,9 @@
 # test_sf.py 用于测试单个程序能否正确调用硅基流动的API
 import os, requests
 
-BASE = "https://api.siliconflow.cn"
-MODEL = "Qwen/Qwen2.5-7B-Instruct"
-KEY = os.getenv("OPENAI_COMPAT_API_KEY", "")
+BASE = "https://api.deepseek.com"
+MODEL = "deepseek-chat"
+KEY = os.getenv("DS_API_KEY", "")
 
 print("key prefix:", (KEY[:8] + "****") if KEY else "<EMPTY>")
 
