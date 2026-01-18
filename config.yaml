@@ -12,8 +12,8 @@ keywords:
 #   - "Large Language Model"
 #   - "LLM"
   
-logic: "AND"                 # 组间逻辑：categories 与 keywords 间 AND/OR
-max_results: 30
+logic: "OR"                 # 组间逻辑：categories 与 keywords 间 AND/OR
+max_results: 100
 sort_by: "lastUpdatedDate"  # 还可以是submittedDate 建议改成lastUpdatedDate按更新时间排，能捞到v2/v3的“新增”
 sort_order: "descending"
 
@@ -35,23 +35,23 @@ email:
   smtp_port: 465
   smtp_pass_env: "SMTP_PASS"
   tls: "ssl"  # auto / ssl / starttls
-  debug: false     # true 可打印 SMTP 调试日志
+  debug: true     # true 可打印 SMTP 调试日志
   detail: "full"  # simple / full
   max_items: 30
   attach_md: true  # 是否开启Markdown附件
-  attach_pdf: false  # 是否开启PDF附件
+  attach_pdf: true  # 是否开启PDF附件
 
 # —— LLM（DeepSeek/OpenAI 兼容） ——
 llm:
   provider: "openai-compatible"     # 兼容 OpenAI SDK 的服务
   # 硅基流动的版本
-  base_url: "https://api.siliconflow.cn"
-  model: "Qwen/Qwen2.5-7B-Instruct"
-  api_key_env: "OPENAI_COMPAT_API_KEY"
+  # base_url: "https://api.siliconflow.cn"
+  # model: "Qwen/Qwen2.5-7B-Instruct"
+  # api_key_env: "OPENAI_COMPAT_API_KEY"
   # Deepseek的版本
-  # base_url: "https://api.deepseek.com"
-  # model: "deepseek-chat"
-  # api_key_env: "DS_API_KEY"
+  base_url: "https://api.deepseek.com"
+  model: "deepseek-chat"
+  api_key_env: "DS_API_KEY"
   
 
   system_prompt_en: |
@@ -79,7 +79,7 @@ site:
   accent: "#2563eb"     # 主题色（可自定义）
 
 freshness:
-  since_days: 3650           # 只看最近 N 天内新提交/更新（1=近24h）
+  since_days: 1           # 只看最近 N 天内新提交/更新（1=近24h）
   unique_only: true       # 开启跨天去重（见过的 arXiv ID 不再重复发）
   state_path: ".state/seen.json"  # 去重状态文件（会随 docs 一起提交保存）
   fallback_when_empty: false # 当今天无新增时，是否回退展示最近的Top若干（建议false）
