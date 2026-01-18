@@ -11,9 +11,9 @@ on:
         type: choice
         options: ["false", "true"]
 
-  # 定时触发：每天 19:00 UTC = 北京时间次日 03:00
+  # 定时触发：每天 22:00 UTC = 北京时间次日 06:00
   schedule:
-    - cron: "0 19 * * *"
+    - cron: "0 22 * * *"
 
 concurrency:
   group: arxiv-digest
