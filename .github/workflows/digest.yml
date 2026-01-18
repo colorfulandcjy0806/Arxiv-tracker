@@ -67,7 +67,7 @@ jobs:
       - name: Compute Pages URL
         id: site
         run: |
-          REPO="${ssrfwanjun/Arxiv-tracker}"    # owner/repo
+          REPO="ssrfwanjun/Arxiv-tracker"    # owner/repo
           OWNER="${REPO%%/*}"
           NAME="${REPO#*/}"
           echo "url=https://${OWNER}.github.io/${NAME}/" >> $GITHUB_OUTPUT
