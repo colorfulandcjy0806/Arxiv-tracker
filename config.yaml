@@ -35,11 +35,11 @@ email:
   smtp_port: 465
   smtp_pass_env: "SMTP_PASS"
   tls: "ssl"  # auto / ssl / starttls
-  debug: false     # true 可打印 SMTP 调试日志
+  debug: true     # true 可打印 SMTP 调试日志
   detail: "full"  # simple / full
   max_items: 30
   attach_md: true  # 是否开启Markdown附件
-  attach_pdf: false  # 是否开启PDF附件
+  attach_pdf: true  # 是否开启PDF附件
 
 # —— LLM（DeepSeek/OpenAI 兼容） ——
 llm:
