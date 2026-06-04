@@ -1,0 +1,4 @@
+interface:
+  display_name: "arXiv Tracker Agent"
+  short_description: "Track arXiv papers with scheduled Codex agents"
+  default_prompt: "Use $arxiv-tracker-agent to set up a daily arXiv paper digest for my research topics."

@@ -53,6 +53,7 @@ docs/                 # GitHub Pages output (auto-generated)
 outputs/              # Per-run JSON/MD (auto-generated)
 .state/               # Dedup state (seen.json, recommend committing it)
 .github/workflows/    # digest.yml (daily 03:00 Beijing time)
+skills/               # Codex skill for scheduled agent usage
 config.yaml           # Search / summary / email / site / dedup config
 requirements.txt      # Dependencies
 ```
@@ -167,6 +168,38 @@ jobs:
 <img src="images/guide.png" alt="Preview" width="720">
 
 > **Note**: include `.state/**` in `file_pattern` to persist dedup state across runs.
+
+---
+
+## 🤖 Codex Skill / Scheduled Agent
+
+This repository includes a Codex skill at `skills/arxiv-tracker-agent`. It helps Codex configure topics, run no-email local tests, set up GitHub Actions schedules, and create a recurring Codex automation when that environment supports scheduled agents.
+
+Install it into Codex:
+
+```bash
+mkdir -p ~/.codex/skills
+cp -R skills/arxiv-tracker-agent ~/.codex/skills/
+```
+
+For development, use a symlink so edits in this repository take effect immediately:
+
+```bash
+mkdir -p ~/.codex/skills
+ln -s "$(pwd)/skills/arxiv-tracker-agent" ~/.codex/skills/arxiv-tracker-agent
+```
+
+Example prompts:
+
+```text
+Use $arxiv-tracker-agent to configure this repository to track cs.CV/cs.LG papers about open vocabulary segmentation every day at 09:00 Beijing time, generate the site, and avoid sending email during tests.
+```
+
+```text
+Use $arxiv-tracker-agent to create a daily 09:00 Codex scheduled agent that runs this repository's arXiv digest, then summarizes new papers, output files, and the site URL.
+```
+
+Keep API keys, SMTP passwords, and recipient addresses in GitHub Secrets, Codex environment variables, or a local secret manager. Do not put secrets in prompts or commits.
 
 ---
 

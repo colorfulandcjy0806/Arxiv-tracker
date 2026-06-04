@@ -52,6 +52,7 @@ docs/                 # GitHub Pages 站点输出（自动生成）
 outputs/              # 每次运行保存的 JSON/MD（自动生成）
 .state/               # 去重状态（seen.json，建议随仓库提交）
 .github/workflows/    # digest.yml 定时任务（每日 03:00 北京时间）
+skills/               # Codex skill（支持定时 agent 调用）
 config.yaml           # 检索/摘要/邮件/站点/去重 配置
 requirements.txt      # 运行依赖
 ```
@@ -166,6 +167,38 @@ jobs:
 
 
 > **要点**：`file_pattern` 里包含 `.state/**`，这样去重状态会随运行持久化到仓库，防止重复推送。
+
+---
+
+## 🤖 Codex Skill / 定时 Agent
+
+本仓库内置 Codex skill：`skills/arxiv-tracker-agent`。它会指导 Codex 完成主题配置、本地无邮件测试、GitHub Actions 定时部署，以及在支持 automation 的 Codex 环境里创建“定时 agent”。
+
+安装到 Codex：
+
+```bash
+mkdir -p ~/.codex/skills
+cp -R skills/arxiv-tracker-agent ~/.codex/skills/
+```
+
+开发调试时也可以用软链接，方便仓库更新后立即生效：
+
+```bash
+mkdir -p ~/.codex/skills
+ln -s "$(pwd)/skills/arxiv-tracker-agent" ~/.codex/skills/arxiv-tracker-agent
+```
+
+调用示例：
+
+```text
+使用 $arxiv-tracker-agent，帮我把本仓库配置成每天北京时间 09:00 追踪 cs.CV/cs.LG 中关于 open vocabulary segmentation 的论文，生成网页，测试时不要发邮件。
+```
+
+```text
+使用 $arxiv-tracker-agent，在 Codex 里创建一个每天 09:00 的定时 agent：运行本仓库的 arXiv digest，完成后汇总新增论文、输出文件和网页链接。
+```
+
+敏感信息请放在 GitHub Secrets、Codex 环境变量或本地 secret manager 中，不要写进 prompt 或提交到仓库。
 
 ---
 
