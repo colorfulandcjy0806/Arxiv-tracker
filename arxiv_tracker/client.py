@@ -5,6 +5,8 @@ import os
 import time
 import random
 import requests
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from typing import Dict, Optional
 
 # 首选 HTTPS，失败时回退到 HTTP（某些网络下 HTTPS 易读超）
@@ -28,13 +30,34 @@ HEADERS = {
 _session = requests.Session()
 
 
-def _sleep_backoff(attempt: int) -> None:
+def _retry_after_seconds(response: Optional[requests.Response]) -> Optional[float]:
+    """解析 HTTP Retry-After（秒数或 HTTP 日期）。"""
+    if response is None:
+        return None
+    value = response.headers.get("Retry-After")
+    if not value:
+        return None
+    try:
+        return max(0.0, float(value))
+    except (TypeError, ValueError):
+        try:
+            retry_at = parsedate_to_datetime(value)
+            if retry_at.tzinfo is None:
+                retry_at = retry_at.replace(tzinfo=timezone.utc)
+            return max(0.0, (retry_at - datetime.now(timezone.utc)).total_seconds())
+        except (TypeError, ValueError, OverflowError):
+            return None
+
+
+def _sleep_backoff(attempt: int, retry_after: Optional[float] = None) -> float:
     """
     指数退避 + 抖动。第 1 次失败等待 ~BASE_PAUSE，
     之后 2^n 递增，并加 0~0.5 随机抖动，封顶 MAX_SLEEP。
     """
-    delay = min(BASE_PAUSE * (2 ** (attempt - 1)) + random.uniform(0, 0.5), MAX_SLEEP)
+    backoff = min(BASE_PAUSE * (2 ** (attempt - 1)) + random.uniform(0, 0.5), MAX_SLEEP)
+    delay = max(backoff, retry_after or 0.0)
     time.sleep(delay)
+    return delay
 
 
 def _do_get(base_url: str, params: Dict[str, str], timeout: Optional[float] = None) -> requests.Response:
@@ -45,10 +68,13 @@ def _do_get(base_url: str, params: Dict[str, str], timeout: Optional[float] = No
     last_err: Optional[Exception] = None
 
     for attempt in range(1, MAX_ATTEMPTS + 1):
+        retry_after: Optional[float] = None
         try:
             resp = _session.get(base_url, params=params, headers=HEADERS, timeout=timeout)
             # 主动对可重试状态码抛出异常，以走重试逻辑
             if resp.status_code in RETRYABLE_STATUS:
+                if resp.status_code == 429:
+                    retry_after = _retry_after_seconds(resp)
                 raise requests.exceptions.HTTPError(f"HTTP {resp.status_code}", response=resp)
             return resp  # 成功
         except (requests.exceptions.Timeout,
@@ -64,7 +90,10 @@ def _do_get(base_url: str, params: Dict[str, str], timeout: Optional[float] = No
 
         # 还有机会就退避后继续
         if attempt < MAX_ATTEMPTS:
-            _sleep_backoff(attempt)
+            delay = _sleep_backoff(attempt, retry_after=retry_after)
+            status = getattr(getattr(last_err, "response", None), "status_code", None)
+            reason = f"HTTP {status}" if status else type(last_err).__name__
+            print(f"[arXiv] {reason}; retry {attempt + 1}/{MAX_ATTEMPTS} in {delay:.1f}s")
 
     # 全部失败
     if last_err:

@@ -123,8 +123,10 @@ jobs:
           SMTP_PASS:    ${{ secrets.SMTP_PASS }}
 
           # 提升 arXiv API 抗抖参数
-          ARXIV_MAX_ATTEMPTS: "6"
-          ARXIV_PAUSE: "1.5"
+          ARXIV_TIMEOUT: "60"
+          ARXIV_MAX_ATTEMPTS: "8"
+          ARXIV_PAUSE: "5"
+          ARXIV_MAX_SLEEP: "120"
         run: |
           set -e
           EVENT="${{ github.event_name }}"
