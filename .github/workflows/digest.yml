@@ -155,10 +155,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update digest, site & dedup state"
-          file_pattern: |
-            docs/**
-            outputs/**
-            .state/**
 
 
 
