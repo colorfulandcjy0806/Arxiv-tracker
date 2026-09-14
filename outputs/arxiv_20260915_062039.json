@@ -1,0 +1,587 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2502.00351v2",
+    "title": "Multi-Order Hyperbolic Graph Convolution and Aggregated Attention for Social Event Detection",
+    "authors": [
+      "Yao Liu",
+      "Zhilan Liu",
+      "Tien Ping Tan",
+      "Yuxin Li"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.SI",
+      "cs.AI"
+    ],
+    "published": "2025-02-01T07:15:40+00:00",
+    "updated": "2025-02-10T10:08:51+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Social event detection (SED) is a task focused on identifying specific real-world events and has broad applications across various domains. It is integral to many mobile applications with social features, including major platforms like Twitter, Weibo, and Facebook. By enabling the analysis of social events, SED provides valuable insights for businesses to understand consumer preferences and supports public services in handling emergencies and disaster management. Due to the hierarchical structure of event detection data, traditional approaches in Euclidean space often fall short in capturing the complexity of such relationships. While existing methods in both Euclidean and hyperbolic spaces have shown promising results, they tend to overlook multi-order relationships between events. To address these limitations, this paper introduces a novel framework, Multi-Order Hyperbolic Graph Convolution with Aggregated Attention (MOHGCAA), designed to enhance the performance of SED. Experimental results demonstrate significant improvements under both supervised and unsupervised settings. To further validate the effectiveness and robustness of the proposed framework, we conducted extensive evaluations across multiple datasets, confirming its superiority in tackling common challenges in social event detection.",
+    "html_url": "https://arxiv.org/abs/2502.00351v2",
+    "pdf_url": "https://arxiv.org/pdf/2502.00351v2",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2412.13472v1",
+    "title": "SocialED: A Python Library for Social Event Detection",
+    "authors": [
+      "Kun Zhang",
+      "Xiaoyan Yu",
+      "Pu Li",
+      "Hao Peng",
+      "Philip S. Yu"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.LG",
+      "cs.DL",
+      "cs.SI"
+    ],
+    "published": "2024-12-18T03:37:47+00:00",
+    "updated": "2024-12-18T03:37:47+00:00",
+    "comments": "8 pages, 1 figure, Python library",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "SocialED is a comprehensive, open-source Python library designed to support social event detection (SED) tasks, integrating 19 detection algorithms and 14 diverse datasets. It provides a unified API with detailed documentation, offering researchers and practitioners a complete solution for event detection in social media. The library is designed with modularity in mind, allowing users to easily adapt and extend components for various use cases. SocialED supports a wide range of preprocessing techniques, such as graph construction and tokenization, and includes standardized interfaces for training models and making predictions. By integrating popular deep learning frameworks, SocialED ensures high efficiency and scalability across both CPU and GPU environments. The library is built adhering to high code quality standards, including unit testing, continuous integration, and code coverage, ensuring that SocialED delivers robust, maintainable software. SocialED is publicly available at \\url{https://github.com/RingBDStack/SocialED} and can be installed via PyPI.",
+    "html_url": "https://arxiv.org/abs/2412.13472v1",
+    "pdf_url": "https://arxiv.org/pdf/2412.13472v1",
+    "code_urls": [
+      "https://github.com/RingBDStack/SocialED",
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2404.08263v2",
+    "title": "Relational Prompt-based Pre-trained Language Models for Social Event Detection",
+    "authors": [
+      "Pu Li",
+      "Xiaoyan Yu",
+      "Hao Peng",
+      "Yantuan Xian",
+      "Linqin Wang",
+      "Li Sun",
+      "Jingyun Zhang",
+      "Philip S. Yu"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG",
+      "cs.SI"
+    ],
+    "published": "2024-04-12T06:23:07+00:00",
+    "updated": "2024-09-10T09:14:49+00:00",
+    "comments": "ACM TOIS",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Social Event Detection (SED) aims to identify significant events from social streams, and has a wide application ranging from public opinion analysis to risk management. In recent years, Graph Neural Network (GNN) based solutions have achieved state-of-the-art performance. However, GNN-based methods often struggle with missing and noisy edges between messages, affecting the quality of learned message embedding. Moreover, these methods statically initialize node embedding before training, which, in turn, limits the ability to learn from message texts and relations simultaneously. In this paper, we approach social event detection from a new perspective based on Pre-trained Language Models (PLMs), and present RPLM_SED (Relational prompt-based Pre-trained Language Models for Social Event Detection). We first propose a new pairwise message modeling strategy to construct social messages into message pairs with multi-relational sequences. Secondly, a new multi-relational prompt-based pairwise message learning mechanism is proposed to learn more comprehensive message representation from message pairs with multi-relational prompts using PLMs. Thirdly, we design a new clustering constraint to optimize the encoding process by enhancing intra-cluster compactness and inter-cluster dispersion, making the message representation more distinguishable. We evaluate the RPLM_SED on three real-world datasets, demonstrating that the RPLM_SED model achieves state-of-the-art performance in offline, online, low-resource, and long-tail distribution scenarios for social event detection tasks.",
+    "html_url": "https://arxiv.org/abs/2404.08263v2",
+    "pdf_url": "https://arxiv.org/pdf/2404.08263v2",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2409.00614v1",
+    "title": "DAMe: Personalized Federated Social Event Detection with Dual Aggregation Mechanism",
+    "authors": [
+      "Xiaoyan Yu",
+      "Yifan Wei",
+      "Pu Li",
+      "Shuaishuai Zhou",
+      "Hao Peng",
+      "Li Sun",
+      "Liehuang Zhu",
+      "Philip S. Yu"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "published": "2024-09-01T04:56:41+00:00",
+    "updated": "2024-09-01T04:56:41+00:00",
+    "comments": "CIKM 2024",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Training social event detection models through federated learning (FedSED) aims to improve participants' performance on the task. However, existing federated learning paradigms are inadequate for achieving FedSED's objective and exhibit limitations in handling the inherent heterogeneity in social data. This paper proposes a personalized federated learning framework with a dual aggregation mechanism for social event detection, namely DAMe. We present a novel local aggregation strategy utilizing Bayesian optimization to incorporate global knowledge while retaining local characteristics. Moreover, we introduce a global aggregation strategy to provide clients with maximum external knowledge of their preferences. In addition, we incorporate a global-local event-centric constraint to prevent local overfitting and ``client-drift''. Experiments within a realistic simulation of a natural federated setting, utilizing six social event datasets spanning six languages and two social media platforms, along with an ablation study, have demonstrated the effectiveness of the proposed framework. Further robustness analyses have shown that DAMe is resistant to injection attacks.",
+    "html_url": "https://arxiv.org/abs/2409.00614v1",
+    "pdf_url": "https://arxiv.org/pdf/2409.00614v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2407.18274v1",
+    "title": "Adaptive Differentially Private Structural Entropy Minimization for Unsupervised Social Event Detection",
+    "authors": [
+      "Zhiwei Yang",
+      "Yuecen Wei",
+      "Haoran Li",
+      "Qian Li",
+      "Lei Jiang",
+      "Li Sun",
+      "Xiaoyan Yu",
+      "Chunming Hu",
+      "Hao Peng"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.SI",
+      "cs.AI"
+    ],
+    "published": "2024-07-23T11:19:22+00:00",
+    "updated": "2024-07-23T11:19:22+00:00",
+    "comments": "Accepted to ACM CIKM 2024",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Social event detection refers to extracting relevant message clusters from social media data streams to represent specific events in the real world. Social event detection is important in numerous areas, such as opinion analysis, social safety, and decision-making. Most current methods are supervised and require access to large amounts of data. These methods need prior knowledge of the events and carry a high risk of leaking sensitive information in the messages, making them less applicable in open-world settings. Therefore, conducting unsupervised detection while fully utilizing the rich information in the messages and protecting data privacy remains a significant challenge. To this end, we propose a novel social event detection framework, ADP-SEMEvent, an unsupervised social event detection method that prioritizes privacy. Specifically, ADP-SEMEvent is divided into two stages, i.e., the construction stage of the private message graph and the clustering stage of the private message graph. In the first stage, an adaptive differential privacy approach is used to construct a private message graph. In this process, our method can adaptively apply differential privacy based on the events occurring each day in an open environment to maximize the use of the privacy budget. In the second stage, to address the reduction in data utility caused by noise, a novel 2-dimensional structural entropy minimization algorithm based on optimal subgraphs is used to detect events in the message graph. The highlight of this process is unsupervised and does not compromise differential privacy. Extensive experiments on two public datasets demonstrate that ADP-SEMEvent can achieve detection performance comparable to state-of-the-art methods while maintaining reasonable privacy budget parameters.",
+    "html_url": "https://arxiv.org/abs/2407.18274v1",
+    "pdf_url": "https://arxiv.org/pdf/2407.18274v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2312.11891v1",
+    "title": "Hierarchical and Incremental Structural Entropy Minimization for Unsupervised Social Event Detection",
+    "authors": [
+      "Yuwei Cao",
+      "Hao Peng",
+      "Zhengtao Yu",
+      "Philip S. Yu"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.SI",
+      "cs.LG"
+    ],
+    "published": "2023-12-19T06:28:32+00:00",
+    "updated": "2023-12-19T06:28:32+00:00",
+    "comments": "Accepted to AAAI 2024",
+    "journal_ref": null,
+    "venue_inferred": "AAAI 2024",
+    "summary": "As a trending approach for social event detection, graph neural network (GNN)-based methods enable a fusion of natural language semantics and the complex social network structural information, thus showing SOTA performance. However, GNN-based methods can miss useful message correlations. Moreover, they require manual labeling for training and predetermining the number of events for prediction. In this work, we address social event detection via graph structural entropy (SE) minimization. While keeping the merits of the GNN-based methods, the proposed framework, HISEvent, constructs more informative message graphs, is unsupervised, and does not require the number of events given a priori. Specifically, we incrementally explore the graph neighborhoods using 1-dimensional (1D) SE minimization to supplement the existing message graph with edges between semantically related messages. We then detect events from the message graph by hierarchically minimizing 2-dimensional (2D) SE. Our proposed 1D and 2D SE minimization algorithms are customized for social event detection and effectively tackle the efficiency problem of the existing SE minimization algorithms. Extensive experiments show that HISEvent consistently outperforms GNN-based methods and achieves the new SOTA for social event detection under both closed- and open-set settings while being efficient and robust.",
+    "html_url": "https://arxiv.org/abs/2312.11891v1",
+    "pdf_url": "https://arxiv.org/pdf/2312.11891v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2312.08374v2",
+    "title": "Unsupervised Social Event Detection via Hybrid Graph Contrastive Learning and Reinforced Incremental Clustering",
+    "authors": [
+      "Yuanyuan Guo",
+      "Zehua Zang",
+      "Hang Gao",
+      "Xiao Xu",
+      "Rui Wang",
+      "Lixiang Liu",
+      "Jiangmeng Li"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.SI",
+      "cs.AI"
+    ],
+    "published": "2023-12-08T08:56:59+00:00",
+    "updated": "2023-12-15T12:41:15+00:00",
+    "comments": "Accepted by Knowledge-Based Systems",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Detecting events from social media data streams is gradually attracting researchers. The innate challenge for detecting events is to extract discriminative information from social media data thereby assigning the data into different events. Due to the excessive diversity and high updating frequency of social data, using supervised approaches to detect events from social messages is hardly achieved. To this end, recent works explore learning discriminative information from social messages by leveraging graph contrastive learning (GCL) and embedding clustering in an unsupervised manner. However, two intrinsic issues exist in benchmark methods: conventional GCL can only roughly explore partial attributes, thereby insufficiently learning the discriminative information of social messages; for benchmark methods, the learned embeddings are clustered in the latent space by taking advantage of certain specific prior knowledge, which conflicts with the principle of unsupervised learning paradigm. In this paper, we propose a novel unsupervised social media event detection method via hybrid graph contrastive learning and reinforced incremental clustering (HCRC), which uses hybrid graph contrastive learning to comprehensively learn semantic and structural discriminative information from social messages and reinforced incremental clustering to perform efficient clustering in a solidly unsupervised manner. We conduct comprehensive experiments to evaluate HCRC on the Twitter and Maven datasets. The experimental results demonstrate that our approach yields consistent significant performance boosts. In traditional incremental setting, semi-supervised incremental setting and solidly unsupervised setting, the model performance has achieved maximum improvements of 53%, 45%, and 37%, respectively.",
+    "html_url": "https://arxiv.org/abs/2312.08374v2",
+    "pdf_url": "https://arxiv.org/pdf/2312.08374v2",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2310.19247v1",
+    "title": "Uncertainty-guided Boundary Learning for Imbalanced Social Event Detection",
+    "authors": [
+      "Jiaqian Ren",
+      "Hao Peng",
+      "Lei Jiang",
+      "Zhiwei Liu",
+      "Jia Wu",
+      "Zhengtao Yu",
+      "Philip S. Yu"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.AI"
+    ],
+    "published": "2023-10-30T03:32:04+00:00",
+    "updated": "2023-10-30T03:32:04+00:00",
+    "comments": "Accepted by TKDE 2023",
+    "journal_ref": "TKDE 2023",
+    "venue_inferred": null,
+    "summary": "Real-world social events typically exhibit a severe class-imbalance distribution, which makes the trained detection model encounter a serious generalization challenge. Most studies solve this problem from the frequency perspective and emphasize the representation or classifier learning for tail classes. While in our observation, compared to the rarity of classes, the calibrated uncertainty estimated from well-trained evidential deep learning networks better reflects model performance. To this end, we propose a novel uncertainty-guided class imbalance learning framework - UCL$_{SED}$, and its variant - UCL-EC$_{SED}$, for imbalanced social event detection tasks. We aim to improve the overall model performance by enhancing model generalization to those uncertain classes. Considering performance degradation usually comes from misclassifying samples as their confusing neighboring classes, we focus on boundary learning in latent space and classifier learning with high-quality uncertainty estimation. First, we design a novel uncertainty-guided contrastive learning loss, namely UCL and its variant - UCL-EC, to manipulate distinguishable representation distribution for imbalanced data. During training, they force all classes, especially uncertain ones, to adaptively adjust a clear separable boundary in the feature space. Second, to obtain more robust and accurate class uncertainty, we combine the results of multi-view evidential classifiers via the Dempster-Shafer theory under the supervision of an additional calibration method. We conduct experiments on three severely imbalanced social event datasets including Events2012\\_100, Events2018\\_100, and CrisisLexT\\_7. Our model significantly improves social event representation and classification tasks in almost all classes, especially those uncertain ones.",
+    "html_url": "https://arxiv.org/abs/2310.19247v1",
+    "pdf_url": "https://arxiv.org/pdf/2310.19247v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2306.16495v1",
+    "title": "Event Detection from Social Media Stream: Methods, Datasets and Opportunities",
+    "authors": [
+      "Quanzhi Li",
+      "Yang Chao",
+      "Dong Li",
+      "Yao Lu",
+      "Chi Zhang"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.SI",
+      "cs.AI",
+      "cs.IR"
+    ],
+    "published": "2023-06-28T18:40:03+00:00",
+    "updated": "2023-06-28T18:40:03+00:00",
+    "comments": "8 pages",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Social media streams contain large and diverse amount of information, ranging from daily-life stories to the latest global and local events and news. Twitter, especially, allows a fast spread of events happening real time, and enables individuals and organizations to stay informed of the events happening now. Event detection from social media data poses different challenges from traditional text and is a research area that has attracted much attention in recent years. In this paper, we survey a wide range of event detection methods for Twitter data stream, helping readers understand the recent development in this area. We present the datasets available to the public. Furthermore, a few research opportunities",
+    "html_url": "https://arxiv.org/abs/2306.16495v1",
+    "pdf_url": "https://arxiv.org/pdf/2306.16495v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2108.03084v3",
+    "title": "Transferring Knowledge Distillation for Multilingual Social Event Detection",
+    "authors": [
+      "Jiaqian Ren",
+      "Hao Peng",
+      "Lei Jiang",
+      "Jia Wu",
+      "Yongxin Tong",
+      "Lihong Wang",
+      "Xu Bai",
+      "Bo Wang",
+      "Qiang Yang"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.LG"
+    ],
+    "published": "2021-08-06T12:38:42+00:00",
+    "updated": "2023-03-31T01:43:33+00:00",
+    "comments": "We withdrew this paper from TPAMI due to the long review cycle. Recently we have restudied our methods and some new great results are discovered",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Recently published graph neural networks (GNNs) show promising performance at social event detection tasks. However, most studies are oriented toward monolingual data in languages with abundant training samples. This has left the more common multilingual settings and lesser-spoken languages relatively unexplored. Thus, we present a GNN that incorporates cross-lingual word embeddings for detecting events in multilingual data streams. The first exploit is to make the GNN work with multilingual data. For this, we outline a construction strategy that aligns messages in different languages at both the node and semantic levels. Relationships between messages are established by merging entities that are the same but are referred to in different languages. Non-English message representations are converted into English semantic space via the cross-lingual word embeddings. The resulting message graph is then uniformly encoded by a GNN model. In special cases where a lesser-spoken language needs to be detected, a novel cross-lingual knowledge distillation framework, called CLKD, exploits prior knowledge learned from similar threads in English to make up for the paucity of annotated data. Experiments on both synthetic and real-world datasets show the framework to be highly effective at detection in both multilingual data and in languages where training samples are scarce.",
+    "html_url": "https://arxiv.org/abs/2108.03084v3",
+    "pdf_url": "https://arxiv.org/pdf/2108.03084v3",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2302.10362v1",
+    "title": "Heterogeneous Social Event Detection via Hyperbolic Graph Representations",
+    "authors": [
+      "Zitai Qiu",
+      "Jia Wu",
+      "Jian Yang",
+      "Xing Su",
+      "Charu C. Aggarwal"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.SI",
+      "cs.LG"
+    ],
+    "published": "2023-02-20T23:41:14+00:00",
+    "updated": "2023-02-20T23:41:14+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Social events reflect the dynamics of society and, here, natural disasters and emergencies receive significant attention. The timely detection of these events can provide organisations and individuals with valuable information to reduce or avoid losses. However, due to the complex heterogeneities of the content and structure of social media, existing models can only learn limited information; large amounts of semantic and structural information are ignored. In addition, due to high labour costs, it is rare for social media datasets to include high-quality labels, which also makes it challenging for models to learn information from social media. In this study, we propose two hyperbolic graph representation-based methods for detecting social events from heterogeneous social media environments. For cases where a dataset has labels, we designed a Hyperbolic Social Event Detection (HSED) model that converts complex social information into a unified social message graph. This model addresses the heterogeneity of social media, and, with this graph, the information in social media can be used to capture structural information based on the properties of hyperbolic space. For cases where the dataset is unlabelled, we designed an Unsupervised Hyperbolic Social Event Detection (UHSED). This model is based on the HSED model but includes graph contrastive learning to make it work in unlabelled scenarios. Extensive experiments demonstrate the superiority of the proposed approaches.",
+    "html_url": "https://arxiv.org/abs/2302.10362v1",
+    "pdf_url": "https://arxiv.org/pdf/2302.10362v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2205.12179v1",
+    "title": "Evidential Temporal-aware Graph-based Social Event Detection via Dempster-Shafer Theory",
+    "authors": [
+      "Jiaqian Ren",
+      "Lei Jiang",
+      "Hao Peng",
+      "Zhiwei Liu",
+      "Jia Wu",
+      "Philip S. Yu"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.AI"
+    ],
+    "published": "2022-05-24T16:22:40+00:00",
+    "updated": "2022-05-24T16:22:40+00:00",
+    "comments": "Accepted by ICWS2022",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "The rising popularity of online social network services has attracted lots of research on mining social media data, especially on mining social events. Social event detection, due to its wide applications, has now become a trivial task. State-of-the-art approaches exploiting Graph Neural Networks (GNNs) usually follow a two-step strategy: 1) constructing text graphs based on various views (\\textit{co-user}, \\textit{co-entities} and \\textit{co-hashtags}); and 2) learning a unified text representation by a specific GNN model. Generally, the results heavily rely on the quality of the constructed graphs and the specific message passing scheme. However, existing methods have deficiencies in both aspects: 1) They fail to recognize the noisy information induced by unreliable views. 2) Temporal information which works as a vital indicator of events is neglected in most works. To this end, we propose ETGNN, a novel Evidential Temporal-aware Graph Neural Network. Specifically, we construct view-specific graphs whose nodes are the texts and edges are determined by several types of shared elements respectively. To incorporate temporal information into the message passing scheme, we introduce a novel temporal-aware aggregator which assigns weights to neighbours according to an adaptive time exponential decay formula. Considering the view-specific uncertainty, the representations of all views are converted into mass functions through evidential deep learning (EDL) neural networks, and further combined via Dempster-Shafer theory (DST) to make the final detection. Experimental results on three real-world datasets demonstrate the effectiveness of ETGNN in accuracy, reliability and robustness in social event detection.",
+    "html_url": "https://arxiv.org/abs/2205.12179v1",
+    "pdf_url": "https://arxiv.org/pdf/2205.12179v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2104.00853v1",
+    "title": "Streaming Social Event Detection and Evolution Discovery in Heterogeneous Information Networks",
+    "authors": [
+      "Hao Peng",
+      "Jianxin Li",
+      "Yangqiu Song",
+      "Renyu Yang",
+      "Rajiv Ranjan",
+      "Philip S. Yu",
+      "Lifang He"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.SI",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "published": "2021-04-02T02:13:10+00:00",
+    "updated": "2021-04-02T02:13:10+00:00",
+    "comments": "Accepted by TKDD 2021. arXiv admin note: text overlap with arXiv:1906.04580",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Events are happening in real-world and real-time, which can be planned and organized for occasions, such as social gatherings, festival celebrations, influential meetings or sports activities. Social media platforms generate a lot of real-time text information regarding public events with different topics. However, mining social events is challenging because events typically exhibit heterogeneous texture and metadata are often ambiguous. In this paper, we first design a novel event-based meta-schema to characterize the semantic relatedness of social events and then build an event-based heterogeneous information network (HIN) integrating information from external knowledge base. Second, we propose a novel Pairwise Popularity Graph Convolutional Network, named as PP-GCN, based on weighted meta-path instance similarity and textual semantic representation as inputs, to perform fine-grained social event categorization and learn the optimal weights of meta-paths in different tasks. Third, we propose a streaming social event detection and evolution discovery framework for HINs based on meta-path similarity search, historical information about meta-paths, and heterogeneous DBSCAN clustering method. Comprehensive experiments on real-world streaming social text data are conducted to compare various social event detection and evolution discovery algorithms. Experimental results demonstrate that our proposed framework outperforms other alternative social event detection and evolution discovery techniques.",
+    "html_url": "https://arxiv.org/abs/2104.00853v1",
+    "pdf_url": "https://arxiv.org/pdf/2104.00853v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2101.08747v2",
+    "title": "Knowledge-Preserving Incremental Social Event Detection via Heterogeneous GNNs",
+    "authors": [
+      "Yuwei Cao",
+      "Hao Peng",
+      "Jia Wu",
+      "Yingtong Dou",
+      "Jianxin Li",
+      "Philip S. Yu"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.LG"
+    ],
+    "published": "2021-01-21T17:56:57+00:00",
+    "updated": "2021-02-13T17:49:54+00:00",
+    "comments": "This work has been accepted to The Web Conference 2021",
+    "journal_ref": "In Proceedings of the Web Conference 2021. 3383-3395",
+    "venue_inferred": "The Web Conference 2021",
+    "summary": "Social events provide valuable insights into group social behaviors and public concerns and therefore have many applications in fields such as product recommendation and crisis management. The complexity and streaming nature of social messages make it appealing to address social event detection in an incremental learning setting, where acquiring, preserving, and extending knowledge are major concerns. Most existing methods, including those based on incremental clustering and community detection, learn limited amounts of knowledge as they ignore the rich semantics and structural information contained in social data. Moreover, they cannot memorize previously acquired knowledge. In this paper, we propose a novel Knowledge-Preserving Incremental Heterogeneous Graph Neural Network (KPGNN) for incremental social event detection. To acquire more knowledge, KPGNN models complex social messages into unified social graphs to facilitate data utilization and explores the expressive power of GNNs for knowledge extraction. To continuously adapt to the incoming data, KPGNN adopts contrastive loss terms that cope with a changing number of event classes. It also leverages the inductive learning ability of GNNs to efficiently detect events and extends its knowledge from previously unseen data. To deal with large social streams, KPGNN adopts a mini-batch subgraph sampling strategy for scalable training, and periodically removes obsolete data to maintain a dynamic embedding space. KPGNN requires no feature engineering and has few hyperparameters to tune. Extensive experiment results demonstrate the superiority of KPGNN over various baselines.",
+    "html_url": "https://arxiv.org/abs/2101.08747v2",
+    "pdf_url": "https://arxiv.org/pdf/2101.08747v2",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/1809.10398v2",
+    "title": "An Intelligent Extraversion Analysis Scheme from Crowd Trajectories for Surveillance",
+    "authors": [
+      "Wenxi Liu",
+      "Yuanlong Yu",
+      "Chun-Yang Zhang",
+      "Genggeng Liu",
+      "Naixue Xiong"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.CV"
+    ],
+    "published": "2018-09-27T08:28:58+00:00",
+    "updated": "2020-01-21T02:29:23+00:00",
+    "comments": "require modification",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "In recent years, crowd analysis is important for applications such as smart cities, intelligent transportation system, customer behavior prediction, and visual surveillance. Understanding the characteristics of the individual motion in a crowd can be beneficial for social event detection and abnormal detection, but it has rarely been studied. In this paper, we focus on the extraversion measure of individual motions in crowds based on trajectory data. Extraversion is one of typical personalities that is often observed in human crowd behaviors and it can reflect not only the characteristics of the individual motion, but also the that of the holistic crowd motions. To our best knowledge, this is the first attempt to analyze individual extraversion of crowd motions based on trajectories. To accomplish this, we first present a effective composite motion descriptor, which integrates the basic individual motion information and social metrics, to describe the extraversion of each individual in a crowd. The social metrics consider both the neighboring distribution and their interaction pattern. Since our major goal is to learn a universal scoring function that can measure the degrees of extraversion across varied crowd scenes, we incorporate and adapt the active learning technique to the relative attribute approach. Specifically, we assume the social groups in any crowds contain individuals with the similar degree of extraversion. Based on such assumption, we significantly reduce the computation cost by clustering and ranking the trajectories actively. Finally, we demonstrate the performance of our proposed method by measuring the degree of extraversion for real individual trajectories in crowds and analyzing crowd scenes from a real-world dataset.",
+    "html_url": "https://arxiv.org/abs/1809.10398v2",
+    "pdf_url": "https://arxiv.org/pdf/1809.10398v2",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/1911.05494v1",
+    "title": "Concept Drift Adaptive Physical Event Detection for Social Media Streams",
+    "authors": [
+      "Abhijit Suprem",
+      "Aibek Musaev",
+      "Calton Pu"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.SI",
+      "cs.CY",
+      "cs.LG",
+      "stat.ML"
+    ],
+    "published": "2019-09-17T05:15:23+00:00",
+    "updated": "2019-09-17T05:15:23+00:00",
+    "comments": "",
+    "journal_ref": "Services Congress 2019",
+    "venue_inferred": null,
+    "summary": "Event detection has long been the domain of physical sensors operating in a static dataset assumption. The prevalence of social media and web access has led to the emergence of social, or human sensors who report on events globally. This warrants development of event detectors that can take advantage of the truly dense and high spatial and temporal resolution data provided by more than 3 billion social users. The phenomenon of concept drift, which causes terms and signals associated with a topic to change over time, renders static machine learning ineffective. Towards this end, we present an application for physical event detection on social sensors that improves traditional physical event detection with concept drift adaptation. Our approach continuously updates its machine learning classifiers automatically, without the need for human intervention. It integrates data from heterogeneous sources and is designed to handle weak-signal events (landslides, wildfires) with around ten posts per event in addition to large-signal events (hurricanes, earthquakes) with hundreds of thousands of posts per event. We demonstrate a landslide detector on our application that detects almost 350% more land-slides compared to static approaches. Our application has high performance: using classifiers trained in 2014, achieving event detection accuracy of 0.988, compared to 0.762 for static approaches.",
+    "html_url": "https://arxiv.org/abs/1911.05494v1",
+    "pdf_url": "https://arxiv.org/pdf/1911.05494v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/1901.00570v1",
+    "title": "Event detection in Twitter: A keyword volume approach",
+    "authors": [
+      "Ahmad Hany Hossny",
+      "Lewis Mitchell"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.SI",
+      "cs.CL",
+      "cs.LG"
+    ],
+    "published": "2019-01-03T01:06:55+00:00",
+    "updated": "2019-01-03T01:06:55+00:00",
+    "comments": "In: Proceedings of the 2nd International Workshop on Social Computing (IWSC '18): Spatial Social Behavior Analytics in Urban Society",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Event detection using social media streams needs a set of informative features with strong signals that need minimal preprocessing and are highly associated with events of interest. Identifying these informative features as keywords from Twitter is challenging, as people use informal language to express their thoughts and feelings. This informality includes acronyms, misspelled words, synonyms, transliteration and ambiguous terms. In this paper, we propose an efficient method to select the keywords frequently used in Twitter that are mostly associated with events of interest such as protests. The volume of these keywords is tracked in real time to identify the events of interest in a binary classification scheme. We use keywords within word-pairs to capture the context. The proposed method is to binarize vectors of daily counts for each word-pair by applying a spike detection temporal filter, then use the Jaccard metric to measure the similarity of the binary vector for each word-pair with the binary vector describing event occurrence. The top n word-pairs are used as features to classify any day to be an event or non-event day. The selected features are tested using multiple classifiers such as Naive Bayes, SVM, Logistic Regression, KNN and decision trees. They all produced AUC ROC scores up to 0.91 and F1 scores up to 0.79. The experiment is performed using the English language in multiple cities such as Melbourne, Sydney and Brisbane as well as the Indonesian language in Jakarta. The two experiments, comprising different languages and locations, yielded similar results.",
+    "html_url": "https://arxiv.org/abs/1901.00570v1",
+    "pdf_url": "https://arxiv.org/pdf/1901.00570v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/1708.06000v1",
+    "title": "Efficient Online Inference for Infinite Evolutionary Cluster models with Applications to Latent Social Event Discovery",
+    "authors": [
+      "Wei Wei",
+      "Kennth Joseph",
+      "Kathleen Carley"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.AI",
+      "cs.CL",
+      "cs.SI"
+    ],
+    "published": "2017-08-20T18:17:27+00:00",
+    "updated": "2017-08-20T18:17:27+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "The Recurrent Chinese Restaurant Process (RCRP) is a powerful statistical method for modeling evolving clusters in large scale social media data. With the RCRP, one can allow both the number of clusters and the cluster parameters in a model to change over time. However, application of the RCRP has largely been limited due to the non-conjugacy between the cluster evolutionary priors and the Multinomial likelihood. This non-conjugacy makes inference di cult and restricts the scalability of models which use the RCRP, leading to the RCRP being applied only in simple problems, such as those that can be approximated by a single Gaussian emission. In this paper, we provide a novel solution for the non-conjugacy issues for the RCRP and an example of how to leverage our solution for one speci c problem - the social event discovery problem. By utilizing Sequential Monte Carlo methods in inference, our approach can be massively paralleled and is highly scalable, to the extent it can work on tens of millions of documents. We are able to generate high quality topical and location distributions of the clusters that can be directly interpreted as real social events, and our experimental results suggest that the approaches proposed achieve much better predictive performance than techniques reported in prior work. We also demonstrate how the techniques we develop can be used in a much more general ways toward similar problems.",
+    "html_url": "https://arxiv.org/abs/1708.06000v1",
+    "pdf_url": "https://arxiv.org/pdf/1708.06000v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/1612.04062v1",
+    "title": "Spatial Pyramid Convolutional Neural Network for Social Event Detection in Static Image",
+    "authors": [
+      "Reza Fuad Rachmadi",
+      "Keiichi Uchimura",
+      "Gou Koutaki"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.CV"
+    ],
+    "published": "2016-12-13T08:32:56+00:00",
+    "updated": "2016-12-13T08:32:56+00:00",
+    "comments": "in Proceeding of 11th International Student Conference on Advanced Science and Technology (ICAST) 2016",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Social event detection in a static image is a very challenging problem and it's very useful for internet of things applications including automatic photo organization, ads recommender system, or image captioning. Several publications show that variety of objects, scene, and people can be very ambiguous for the system to decide the event that occurs in the image. We proposed the spatial pyramid configuration of convolutional neural network (CNN) classifier for social event detection in a static image. By applying the spatial pyramid configuration to the CNN classifier, the detail that occurs in the image can observe more accurately by the classifier. USED dataset provided by Ahmad et al. is used to evaluate our proposed method, which consists of two different image sets, EiMM, and SED dataset. As a result, the average accuracy of our system outperforms the baseline method by 15% and 2% respectively.",
+    "html_url": "https://arxiv.org/abs/1612.04062v1",
+    "pdf_url": "https://arxiv.org/pdf/1612.04062v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  }
+]
