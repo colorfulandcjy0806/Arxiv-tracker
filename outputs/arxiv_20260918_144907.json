@@ -1,0 +1,89 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2609.19913v1",
+    "title": "Digital Twins for Opinion Dynamics: A Generative LLM Framework for Social Networks",
+    "authors": [
+      "Omran Berjawi",
+      "Giuseppe Fenza",
+      "Rida Khatoun",
+      "Sherali Zeadally"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.LG"
+    ],
+    "published": "2026-09-17T08:53:47+00:00",
+    "updated": "2026-09-17T08:53:47+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "The study of opinion dynamics in social networks is one of the key challenges in computational social science with direct relevance to understanding political polarization, misinformation, and health responses. Current approaches focus on simplified mathematical models that ignore linguistic and contextual factors related to belief updates or use Large Language Model (LLM)-based simulations that have not been validated against real data. We present a framework based on the concept of a digital twin to simulate opinion dynamics in social networks. The approach fills the gap by cloning a real-world Twitter network, assigns a set of attributes for agents (such as persona, emotions, centrality, stubbornness, and influence), and employs Mistral-7B to perform opinion update based on memory and social exposure. To evaluate the proposed approach, we validate it against two real Twitter datasets (COVID-19 discourse and U.S elections 2020). The results show that the capability of the proposed framework reproduces opinion trajectories and reduces individual prediction error by more than 50% compared to the best-performing classical baseline (Mistral-7B achieves Mean Absolute Error (MAE) = 0.150 and 0.121 on the COVID-19 and US Election 2020 datasets, respectively). We observe similar improvements in structural alignment (Delta_r = 0.120 and 0.180) and polarization dynamics (Delta_Var = 0.106 and 0.115) on the two datasets, respectively. Additionally, the ablation studies confirm that agent attributes, memory, and social exposure all contribute to the framework's predictive fidelity in reproducing opinion trajectories, with agent attributes being the most critical contributor. Overall, our results demonstrate that grounding Mistral-7B within empirically cloned interaction networks produces a realistic simulation framework capable of reproducing complex social dynamics.",
+    "html_url": "https://arxiv.org/abs/2609.19913v1",
+    "pdf_url": "https://arxiv.org/pdf/2609.19913v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": [],
+    "_track": "related"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.19864v1",
+    "title": "Converging Naming Styles, Persistent Network Locality: GitHub in the LLM Era",
+    "authors": [
+      "Yuto Tamura",
+      "Sho Tsugawa"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.SI"
+    ],
+    "published": "2026-09-17T08:19:34+00:00",
+    "updated": "2026-09-17T08:19:34+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Social conventions often emerge through repeated interactions within social networks, allowing shared practices to coexist with variation across groups. Large language models (LLMs) introduce a potentially different coordination structure: a small number of widely used models can expose socially distant users to similar patterns and suggestions. Whether broad convergence under such shared technological influences eliminates network-local variation remains unclear. We examine this question in software development, where identifier naming styles provide observable conventions and LLM-based tools have rapidly diffused. Using public GitHub repositories created between 2015 and September 2025 across six programming languages, we characterize naming styles with 27 features and examine their association with detected LLM-related commits, their diversity across repository creation cohorts, and their relationship to owner proximity in a large-scale collaboration network. Repositories with detected LLM-related commits tend to use longer identifiers and, in several languages, make greater use of naming patterns already prevalent within the language. We also observe lower naming-style diversity in recent creation cohorts, with marked declines appearing around 2023-2024 in several languages, although their timing and trajectories differ. At the same time, network locality persists: in five of the six languages, repositories whose owners are closer in the collaboration network remain more similar in naming style even among recent, more homogeneous cohorts. These findings show that aggregate convergence and network-local variation can coexist, highlighting the need to examine not only how much cultural variation remains, but also how that variation continues to be structured by human social relationships in the era of widely shared AI systems.",
+    "html_url": "https://arxiv.org/abs/2609.19864v1",
+    "pdf_url": "https://arxiv.org/pdf/2609.19864v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": [],
+    "_track": "related"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.19789v1",
+    "title": "Contagion on the Trading Floor: How Adversarial Signals Spread in Multi-Agent Trading Systems",
+    "authors": [
+      "Qi Rong Sua",
+      "Junhao Dong",
+      "Nguyen Duc Thai",
+      "Yuqing Wen",
+      "Cheston Tan",
+      "Yew-Soon Ong"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.AI"
+    ],
+    "published": "2026-09-17T06:54:59+00:00",
+    "updated": "2026-09-17T06:54:59+00:00",
+    "comments": "Published in ECML PKDD 2026. 25 pages, including 7 pages of supplementary material",
+    "journal_ref": "Machine Learning and Knowledge Discovery in Databases. Research Track, ECML PKDD 2026, LNCS 16946, Springer (2027) 206-223",
+    "venue_inferred": null,
+    "summary": "Multi-agent trading systems built on large language models (LLMs) are beginning to appear in quantitative finance, yet their robustness to adversarial inputs is largely unknown. We study the vulnerability of LLM trading stacks to black-box, input-only attacks that enter solely via admissible social-media feeds. We introduce the Generic Multi-Agent Trading System (GMATS), a framework that captures modern multiagent trading architectures and instantiate a class of black-box poisoning attackers that treat an LLM as a post generator and inject budget-constrained, plausibly benign social-media content into the analyst's evidence stream. We define contagion metrics that trace how adversarial content propagates through the stack, including belief-shift scores at analyst and coordinator layers and attack-clean deltas on standard backtest metrics. Experiments on a safe offline benchmark with historical market and social data show that even simple input-only attackers can materially degrade risk-return profiles, sharply reducing Sharpe ratios. At the same time, we find that suitably designed multi-agent topologies and coordinator prompts can dampen adversarial shocks and improve average robustness under identical poisoning budgets.",
+    "html_url": "https://arxiv.org/abs/2609.19789v1",
+    "pdf_url": "https://arxiv.org/pdf/2609.19789v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": [],
+    "_track": "related"
+  }
+]
