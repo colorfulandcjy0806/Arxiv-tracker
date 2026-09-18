@@ -1,7 +1,7 @@
 name: arxiv-digest
 
 on:
-  # 手动触发：增加一个“是否发送邮件”的输入开关（默认 false）
+  # Manual run: choose whether this run should send email.
   workflow_dispatch:
     inputs:
       send_email:
@@ -11,32 +11,36 @@ on:
         type: choice
         options: ["false", "true"]
 
-  # 定时触发：每天 19:00 UTC = 北京时间次日 03:00
+  # Daily at 19:00 UTC = Beijing time 03:00 next day.
   schedule:
     - cron: "0 19 * * *"
 
 concurrency:
   group: arxiv-digest
-  cancel-in-progress: true      # 避免同一时间并发跑两次（防重复邮件）
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     permissions:
-      contents: write           # 允许提交 docs
+      contents: write
+
     env:
-      TZ: Asia/Shanghai         # 站点/邮件时间戳按北京时间显示
+      TZ: Asia/Shanghai
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: true
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.10"
-          cache: "pip"          # [新增] 启用 pip 缓存，加速依赖安装
-      
+          cache: "pip"
+
       - name: Install system dependencies for Cairo
         run: |
           sudo apt-get update
@@ -52,13 +56,11 @@ jobs:
             libfreetype6-dev \
             pkg-config
 
-            
-      # [新增] 预装构建工具，避免在构建 pycairo 时临时下载安装
       - name: Prep build tools
         run: |
           python -m pip install --upgrade pip setuptools wheel
           python -m pip install "meson>=1.4" "ninja>=1.11"
-      
+
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
@@ -67,12 +69,11 @@ jobs:
       - name: Compute Pages URL
         id: site
         run: |
-          REPO="${GITHUB_REPOSITORY}"    # owner/repo
+          REPO="${GITHUB_REPOSITORY}"
           OWNER="${REPO%%/*}"
           NAME="${REPO#*/}"
-          echo "url=https://${OWNER}.github.io/${NAME}/" >> $GITHUB_OUTPUT
+          echo "url=https://${OWNER}.github.io/${NAME}/" >> "$GITHUB_OUTPUT"
 
-      # 一次性检查邮箱变量注入是否OK
       - name: Show email env (masked)
         env:
           EMAIL_TO: ${{ secrets.EMAIL_TO || vars.EMAIL_TO }}
@@ -81,27 +82,40 @@ jobs:
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
         run: |
           python - <<'PY'
-          import os, re
-          def mask(s):
-              if not s: return ""
-              s = str(s)
-              return re.sub(r'(^.).*(@.*$)', r'\1***\2', s) if "@" in s else s[:1] + "***"
-          tos = [x.strip() for x in re.split(r'[;,]', os.getenv('EMAIL_TO','')) if x.strip()]
+          import os
+          import re
+
+          def mask(value):
+              if not value:
+                  return ""
+              value = str(value)
+              if "@" in value:
+                  return re.sub(r'(^.).*(@.*$)', r'\1***\2', value)
+              return value[:1] + "***"
+
+          tos = [
+              x.strip()
+              for x in re.split(r'[;,]', os.getenv('EMAIL_TO', ''))
+              if x.strip()
+          ]
+
           print("EMAIL_TO     :", [mask(x) for x in tos])
-          print("EMAIL_SENDER :", mask(os.getenv('EMAIL_SENDER','')))
-          print("SMTP_USER    :", mask(os.getenv('SMTP_USER','')))
+          print("EMAIL_SENDER :", mask(os.getenv('EMAIL_SENDER', '')))
+          print("SMTP_USER    :", mask(os.getenv('SMTP_USER', '')))
           print("HAS_SMTP_PASS:", bool(os.getenv('SMTP_PASS')))
           PY
 
-      #  检查 LLM 相关环境变量是否已注入（只显示 SET/MISSING）
       - name: Show LLM env (masked)
         env:
           OPENAI_COMPAT_API_KEY: ${{ secrets.OPENAI_COMPAT_API_KEY || vars.OPENAI_COMPAT_API_KEY }}
-          DS_API_KEY:            ${{ secrets.DS_API_KEY            || vars.DS_API_KEY }}
+          DS_API_KEY: ${{ secrets.DS_API_KEY || vars.DS_API_KEY }}
         run: |
           python - <<'PY'
           import os
-          def flag(k): print(f"{k}: {'SET' if os.getenv(k) else 'MISSING'}")
+
+          def flag(key):
+              print(f"{key}: {'SET' if os.getenv(key) else 'MISSING'}")
+
           flag("OPENAI_COMPAT_API_KEY")
           flag("DS_API_KEY")
           PY
@@ -110,34 +124,32 @@ jobs:
         run: |
           echo "run_id=${{ github.run_id }} run_attempt=${{ github.run_attempt }} event=${{ github.event_name }} input.send_email=${{ inputs.send_email }}"
 
-      - name: Run tracker & generate site (schedule-only email unless forced)
+      - name: Run tracker and generate site
         env:
-          # LLM（DeepSeek / OpenAI 兼容实现）
           OPENAI_COMPAT_API_KEY: ${{ secrets.OPENAI_COMPAT_API_KEY || vars.OPENAI_COMPAT_API_KEY }}
-          DS_API_KEY:            ${{ secrets.DS_API_KEY            || vars.DS_API_KEY }}
+          DS_API_KEY: ${{ secrets.DS_API_KEY || vars.DS_API_KEY }}
 
-          # 邮件地址/用户名：优先 Secrets，若无回退 Variables
-          EMAIL_TO:     ${{ secrets.EMAIL_TO     || vars.EMAIL_TO }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO || vars.EMAIL_TO }}
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER || vars.EMAIL_SENDER }}
-          SMTP_USER:    ${{ secrets.SMTP_USER    || vars.SMTP_USER }}
-          SMTP_PASS:    ${{ secrets.SMTP_PASS }}
+          SMTP_USER: ${{ secrets.SMTP_USER || vars.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
 
-          # 提升 arXiv API 抗抖参数
           ARXIV_TIMEOUT: "60"
           ARXIV_MAX_ATTEMPTS: "8"
           ARXIV_PAUSE: "5"
           ARXIV_MAX_SLEEP: "120"
         run: |
           set -e
+
           EVENT="${{ github.event_name }}"
           ATTEMPT="${{ github.run_attempt }}"
           SEND="${{ inputs.send_email || 'false' }}"
           EXTRA=""
 
-          # 规则：
-          # 1) 定时触发 且 attempt==1 → 发送
-          # 2) 手动触发 且 send_email==true → 发送
-          # 3) 其他情况 → 不发送
+          # Email rules:
+          # 1) Scheduled first attempt -> send email.
+          # 2) Manual run with send_email=true -> send email.
+          # 3) Retry/other manual runs -> --no-email.
           if { [ "$EVENT" = "schedule" ] && [ "$ATTEMPT" = "1" ]; } || \
              { [ "$EVENT" = "workflow_dispatch" ] && [ "$SEND" = "true" ]; }; then
             EXTRA=""
@@ -146,6 +158,7 @@ jobs:
           fi
 
           echo "event=$EVENT attempt=$ATTEMPT manual.send_email=$SEND EXTRA=$EXTRA"
+
           python -m arxiv_tracker.cli run \
             --config config.yaml \
             --site-dir docs \
@@ -153,13 +166,18 @@ jobs:
             $EXTRA \
             --verbose
 
-      - name: Commit changes to docs & state
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Show generated changes
+        run: |
+          git status --short
+
+      # No file_pattern is used intentionally.
+      # The action commits all changed generated files, including docs/, outputs/
+      # and .state/seen.json. This avoids pathspec failures when one pattern has
+      # no matching change on a particular day.
+      - name: Commit generated site, outputs and dedup state
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "chore: update digest, site & dedup state"
 
-
-
-# 之后到仓库 Settings → Pages：
-#   - Source 选 “Deploy from a branch”
-#   - Branch 选 main / docs
+# GitHub Pages:
+# Settings -> Pages -> Deploy from a branch -> main / docs
