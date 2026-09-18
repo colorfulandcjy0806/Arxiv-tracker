@@ -1,0 +1,100 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2609.19693v1",
+    "title": "IMFD: End-to-end Multi-Face Forgery Detection through Instruction-based Large Vision-Language Models",
+    "authors": [
+      "Dasom Choi",
+      "Sangjun Moon",
+      "Hyeongchan Im",
+      "Jaeeon Park",
+      "Jingun Kwon",
+      "Hidetaka Kamigaito",
+      "Taro Watanabe",
+      "Manabu Okumura"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.CV"
+    ],
+    "published": "2026-09-17T04:40:20+00:00",
+    "updated": "2026-09-17T04:40:20+00:00",
+    "comments": "8 pages, 5 figures, 5 tables. Accepted to Findings of AACL-IJCNLP 2026",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "The rapid increase of deepfakes has raised significant concerns due to their spread on social media. Traditional multi-face forgery detectors crop and verify each face independently, ignoring background context and inter-face relationships, which often yields suboptimal performance. To overcome these limitations, we leverage instruction-based Large Vision-Language Models (LVLMs), which can interpret entire images and follow complex textual instructions. We propose a simple yet effective single-stage multi-face forgery detector, called IMFD (Instruction-based Multi-face Forgery Detector), which is trained end-to-end to jointly localize faces and predict per-face forgery labels. Rather than treating face box prediction only as a joint objective, IMFD explicitly integrates predicted face bounding boxes into the instruction as visual cues that enhance instruction grounding and forgery detection. To support the training and evaluation of IMFD, we convert existing multi-face forgery datasets into an instruction-based format. Experimental results and analyses show that IMFD improves multi-face forgery detection by integrating face bounding boxes into the instruction, and consistently outperforms various state-of-the-art methods.",
+    "html_url": "https://arxiv.org/abs/2609.19693v1",
+    "pdf_url": "https://arxiv.org/pdf/2609.19693v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": [],
+    "_track": "related"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.19585v1",
+    "title": "CliniCIRCA: A Modular LLM Framework for Constructing Longitudinal Mental Health Patient Journeys from Raw EHR Narratives",
+    "authors": [
+      "Aiwei Ivy Zhang",
+      "Nimra Ishfaq",
+      "Mohit Chandra",
+      "Santiago Alvarez Lesmes",
+      "Adam Coscia",
+      "Khatiya Chelidze Moon",
+      "Xiaohan Ding",
+      "Munmun De Choudhury"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.IR",
+      "cs.LG"
+    ],
+    "published": "2026-09-17T02:13:21+00:00",
+    "updated": "2026-09-17T02:13:21+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "In mental health care, reasoning over patient journeys is a key task for clinicians. Yet these journeys, encompassing a longitudinal progression of biological, psychological, and social events, are often spread across disparate unstructured text narratives, making temporal recovery challenging. We present CliniCIRCA, a multi-stage LLM framework for Calendar-anchored, Imprecision-aware Reconstruction of Clinical Annals. To our knowledge, CliniCIRCA is the first to temporally classify clinical events across unstructured discharge summaries without event-level timestamps. From 14,882 MIMIC-III mental health admissions, we first construct a benchmark of 52 discharge summaries on which CliniCIRCA produces 15,891 temporally tagged events. After correcting 629 errors based on a clinician-in-the-loop evaluation, we produce verified gold-standard labels. Finally, the corrected timelines drive a temporally grounded summarization stage that compresses each source 1.52 times into a date-grouped chronological record. We then scale the framework to generate 1,000 silver-standard timelines and evaluate them as training data. Compared with zero- and few-shot prompting, instruction tuning generally improves five open-weight models on event extraction, temporal tagging, and summarization across silver and clinician-verified evaluations.",
+    "html_url": "https://arxiv.org/abs/2609.19585v1",
+    "pdf_url": "https://arxiv.org/pdf/2609.19585v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": [],
+    "_track": "related"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.18905v1",
+    "title": "Structured Claim-Level Discourse Representations for Dense Health Narratives",
+    "authors": [
+      "Farnoushsadat Nilizadeh",
+      "Elham Pourabbas Vafa",
+      "Shirin Nilizadeh",
+      "Eduard Dragut"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.CL"
+    ],
+    "published": "2026-09-16T16:43:11+00:00",
+    "updated": "2026-09-16T16:43:11+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Health discourse in social media videos often contains densely entangled claims spanning multiple thematic aspects, stances, evidential frames, and rhetorical functions within short conversational spans. Existing approaches largely rely on coarse topic-level, sentiment-based, or stance-oriented representations that do not adequately capture this structure. Our analysis identifies an average of 13.22 atomic claims per minute, motivating richer claim-level discourse representations. We introduce a structured framework for claim-level discourse analysis in dense health narratives. Our framework models discourse through tuples linking atomic claims with thematic aspects, stance, and multidimensional pragmatic discourse attributes. To support this setting, we construct a benchmark spanning four health domains with 1,191 manually annotated claims from 60 videos. Using this framework, we evaluate automated structured discourse analysis under different discourse context settings. Results show that current LLMs achieve strong performance on thematic categorization and stance prediction, but struggle with high-dimensional pragmatic profiling. We also find that different discourse tasks benefit from different forms of contextual reasoning, suggesting that future systems may require task decomposition and specialized inference strategies.",
+    "html_url": "https://arxiv.org/abs/2609.18905v1",
+    "pdf_url": "https://arxiv.org/pdf/2609.18905v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": [],
+    "_track": "related"
+  }
+]
