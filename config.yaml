@@ -1,4 +1,21 @@
-categories: ["cs.CV", "cs.LG", "cs.AI"]
+# ==========================================================
+# arXiv categories
+# ==========================================================
+# cs.CL: Computation and Language
+# cs.SI: Social and Information Networks
+# cs.AI: Artificial Intelligence
+# cs.LG: Machine Learning
+# cs.CV: Computer Vision (for multimodal/event-related work)
+categories:
+  - "cs.CL"
+  - "cs.SI"
+  - "cs.AI"
+  - "cs.LG"
+  - "cs.CV"
+
+# ==========================================================
+# Track 1: Core — Social Event Detection
+# ==========================================================
 keywords:
   - "social event detection"
   - "social media event detection"
@@ -11,87 +28,166 @@ keywords:
   - "social media event clustering"
   - "microblog event detection"
   - "social stream event detection"
+  - "incremental social event detection"
+  - "unsupervised social event detection"
+  - "open-world social event detection"
+  - "open-set social event detection"
   - "social event evolution"
   - "social media event evolution"
 
-# exclude_keywords: # 选择排除的关键词
-#   - "Large Language Model"
-#   - "LLM"
-  
-logic: "AND"                 # 组间逻辑：categories 与 keywords 间 AND/OR
-max_results: 30
-sort_by: "lastUpdatedDate"  # 还可以是submittedDate 建议改成lastUpdatedDate按更新时间排，能捞到v2/v3的“新增”
+# ==========================================================
+# Track 2: Related Research
+# ==========================================================
+# A) These phrases are sufficiently close to SED to be searched directly.
+related_keywords:
+  - "multimodal event detection"
+  - "multimodal event extraction"
+  - "social media event extraction"
+  - "event extraction"
+  - "event discovery"
+  - "emerging event detection"
+  - "online event detection"
+  - "streaming event detection"
+  - "event clustering"
+  - "event evolution"
+  - "topic detection and tracking"
+  - "topic discovery"
+  - "emerging topic detection"
+
+# B) These are broader methods. They are NOT searched alone.
+# They must co-occur with at least one related_context_keywords phrase.
+related_method_keywords:
+  - "large language model"
+  - "LLM"
+  - "retrieval augmented generation"
+  - "RAG"
+  - "temporal graph neural network"
+  - "dynamic graph neural network"
+  - "heterogeneous graph neural network"
+  - "graph clustering"
+  - "online clustering"
+  - "streaming clustering"
+  - "contrastive learning"
+  - "multimodal large language model"
+  - "vision language model"
+
+# C) Context anchors for the broad methods above.
+related_context_keywords:
+  - "social media"
+  - "social network"
+  - "microblog"
+  - "event detection"
+  - "event extraction"
+  - "event discovery"
+  - "event clustering"
+  - "topic detection"
+  - "topic discovery"
+
+# Optional exclusions. Keep empty unless you observe systematic noise.
+exclude_keywords: []
+
+# categories group AND keyword group
+logic: "AND"
+
+# Daily quota: prefer the core direction, but reserve slots for related work.
+max_results: 10
+core_max_results: 7
+related_max_results: 3
+
+# For a "new paper" tracker, submittedDate is safer than lastUpdatedDate.
+sort_by: "submittedDate"
 sort_order: "descending"
 
 # zh / en / both
 lang: "both"
 
-# —— 摘要设置 ——
-# mode: none / heuristic / llm
+# ==========================================================
+# Summary
+# ==========================================================
 summary:
-  mode: llm # mode: "heuristic"
-  # scope: tldr / full / both
-  scope: "both"
+  mode: "llm"       # none / heuristic / llm
+  scope: "both"     # tldr / full / both
 
-# —— 邮件发送（QQ 邮箱） ——
+# ==========================================================
+# Email (QQ Mail)
+# ==========================================================
 email:
   enabled: true
   subject: "[arXiv] Daily Digest"
   smtp_server: "smtp.qq.com"
   smtp_port: 465
   smtp_pass_env: "SMTP_PASS"
-  tls: "ssl"  # auto / ssl / starttls
-  debug: false     # true 可打印 SMTP 调试日志
-  detail: "full"  # simple / full
-  max_items: 30
-  attach_md: true  # 是否开启Markdown附件
-  attach_pdf: false  # 是否开启PDF附件
+  tls: "ssl"        # auto / ssl / starttls
+  debug: false
+  detail: "full"    # simple / full
+  max_items: 10
+  attach_md: true
+  attach_pdf: false
 
-# —— LLM（DeepSeek/OpenAI 兼容） ——
+# ==========================================================
+# LLM (OpenAI-compatible API)
+# ==========================================================
 llm:
-  provider: "openai-compatible"     # 兼容 OpenAI SDK 的服务
-  # 硅基流动的版本
+  provider: "openai-compatible"
   base_url: "https://api.siliconflow.cn"
   model: "deepseek-flash"
   api_key_env: "OPENAI_COMPAT_API_KEY"
-  # Deepseek的版本
-  # base_url: "https://api.deepseek.com"
-  # model: "deepseek-flash"
-  # api_key_env: "OPENAI_COMPAT_API_KEY"
-  
 
   system_prompt_en: |
     You are a senior paper-reading assistant. Based on the given metadata and abstract,
     write ONE concise paragraph in English that covers: research motivation, main method,
     and key experimental findings. Be objective and specific; avoid marketing language.
     Preserve any provided links, but do NOT repeat them in the paragraph.
+
   system_prompt_zh: |
     你是资深论文阅读助手。基于给定的论文元信息与摘要，用中文写「一段」简洁的总结，
     包含研究动机、核心方法与关键实验结果。保持客观、术语准确；避免营销式表述。
     如有链接请保留，但不要在总结里重复链接。
 
-# —— 中文翻译设置（用 LLM 翻译 title/summary） ——
+# ==========================================================
+# Chinese translation
+# ==========================================================
 translate:
-  enabled: true         # 是否启用
-  lang: "zh"            # 目前只需中文；也可扩展 en/ja 等
-  fields: ["title", "summary"]   # 可扩：["title","summary","comments"]
+  enabled: true
+  lang: "zh"
+  fields: ["title", "summary"]
 
+# ==========================================================
+# Static site
+# ==========================================================
 site:
   enabled: true
-  dir: "docs" 
+  dir: "docs"
   title: "arXiv 论文速递"
-  keep_runs: 1024         # 历史保留期（按页面份数）
-  theme: "light"        # "light" | "dark" | "auto"
-  accent: "#2563eb"     # 主题色（可自定义）
+  keep_runs: 1024
+  theme: "light"        # light / dark / auto
+  accent: "#2563eb"
 
+# ==========================================================
+# Freshness + cross-day dedup
+# ==========================================================
 freshness:
-  since_days: 3650           # 只看最近 N 天内新提交/更新（1=近24h）
-  unique_only: true       # 开启跨天去重（见过的 arXiv ID 不再重复发）
-  state_path: ".state/seen.json"  # 去重状态文件（会随 docs 一起提交保存）
-  fallback_when_empty: false # 当今天无新增时，是否回退展示最近的Top若干（建议false）
+  # Search recent papers, then rely on seen.json to avoid resending them.
+  # 3 days is enough for a daily job while tolerating arXiv/API timing differences.
+  since_days: 3
 
+  # Cross-day deduplication.
+  unique_only: true
+  state_path: ".state/seen.json"
+
+  # Never refill an empty day with old papers.
+  fallback_when_empty: false
+
+  # false is recommended for this email-first workflow:
+  # a manual --no-email/site-only test will NOT consume papers from the email queue.
+  # When email is enabled, papers are marked seen only after successful email delivery.
+  mark_seen_on_site: false
+
+# ==========================================================
+# Link scraping
+# ==========================================================
 scrape:
-  html: true               # 先用 HTML 页抓链接
-  pdf_if_missing: true     # 若没抓到 code，再去扫 PDF 头部兜底
-  pdf_first_page: false    # （可保留为 false；若你想“不管有没有都扫 PDF”，设 true）
+  html: true
+  pdf_if_missing: true
+  pdf_first_page: false
   timeout: 10
