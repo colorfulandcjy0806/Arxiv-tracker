@@ -1,0 +1,30 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2609.24464v1",
+    "title": "RAILS: Retrieval-Augmented Incremental LLM Clustering at Scale",
+    "authors": [
+      "Armin Oliya",
+      "Aleksandra Sawczuk",
+      "Radosław Białobrzeski"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.LG"
+    ],
+    "published": "2026-09-21T12:08:13+00:00",
+    "updated": "2026-09-21T12:08:13+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Using a Large Language Model (LLM) as the clusterer at production scale is hard: prompts cannot hold the entire label space, and per-document serial processing does not deliver the throughput real workloads require. We present RAILS, a retrieval-augmented incremental LLM clusterer that turns clustering into a simple loop over a growing label pool and scales through document batching with bounded concurrency. On six public benchmarks RAILS exceeds the strongest prior LLM-clustering method on average, lifting accuracy from 51.2% to 59.3%, NMI from 67.2% to 74.8%, and ARI from 45.4% to 54.7%. We further report production-deployment evidence from a SaaS ticket-topic-discovery pipeline, where RAILS has replaced a traditional HDBSCAN stage with higher clustering quality, transparent prompt-driven control, and stateful incremental operation.",
+    "html_url": "https://arxiv.org/abs/2609.24464v1",
+    "pdf_url": "https://arxiv.org/pdf/2609.24464v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": [],
+    "_track": "related"
+  }
+]
