@@ -1,0 +1,30 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2609.25669v1",
+    "title": "From Utterances to Networks: Modelling Slang Adoption and Diffusion Across Subreddits",
+    "authors": [
+      "Xiaoning Wang",
+      "Ted Underwood",
+      "Zhewei Sun"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.CL"
+    ],
+    "published": "2026-09-22T04:19:16+00:00",
+    "updated": "2026-09-22T04:19:16+00:00",
+    "comments": "Accepted to EMNLP 2026 main conference",
+    "journal_ref": null,
+    "venue_inferred": "EMNLP 2026",
+    "summary": "Adoption and diffusion of neologisms in online communities have received renewed attention in recent years. As internet slang terms such as APT, referring to a K-pop song, and phrases such as Canon Event meaning an embarrassing but pivotal event, go viral online, it becomes increasingly important to understand the mechanisms that contribute to their success. Prior studies have often explained slang diffusion either from the perspective of social interaction or from the linguistic properties of the slang itself, but rarely from both perspectives together. One major obstacle has been the high cost of annotating slang usage in large-scale online communication. Recent advances in large language models (LLMs), however, make it possible to use them as scalable annotators for such tasks. In this study, we first curate a human-annotated benchmark to evaluate LLM performance in detecting slang usage in real Reddit communication. We then leverage LLM-based annotations to model slang adoption and diffusion. Our results show that slang diffusers with higher bridging capital are associated with increased subsequent adoption, whereas diffusers with higher bonding capital are associated with reduced adoption. We also find that wider contextual usage of a slang term is associated with a longer time before new users officially adopt it. Together, these findings suggest that both social-network structure and linguistic context shape the diffusion of neologisms in online communities.",
+    "html_url": "https://arxiv.org/abs/2609.25669v1",
+    "pdf_url": "https://arxiv.org/pdf/2609.25669v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": [],
+    "_track": "related"
+  }
+]
