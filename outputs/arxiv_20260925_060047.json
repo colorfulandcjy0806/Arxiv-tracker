@@ -1,0 +1,102 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2609.28049v1",
+    "title": "Prompt, Probe, Train, or Annotate? Single-camera sports video understanding in amateur settings",
+    "authors": [
+      "Sai Varun Kodathala",
+      "Prashanth Pollishetty",
+      "Jaylen Cargill"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "published": "2026-09-23T13:05:24+00:00",
+    "updated": "2026-09-23T13:05:24+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Video understanding is usually benchmarked on curated, single-actor, or professionally filmed clips, and a strong score there is routinely read as evidence a model is robust enough for deployment. Amateur team sport is a useful, largely untested place to check that assumption: over eight million students played a school sport in the United States in 2024-25 alone, almost none of it filmed by more than a single fixed camera, with several candidate actors crowded into frame and no operator or second angle to fall back on. Using volleyball as a test case, we ask whether strong performance on general video and world-model benchmarks translates into reliable, per-player attribution once footage is this chaotic, turning footage into statistics through a chain of tasks from finding play boundaries to naming who did what. We evaluate four approaches (prompting and agentic reasoning over frontier vision-language models, classical computer vision with small trained specialists, self-supervised video world models, and manual annotation) at every stage, on 66 amateur matches with 46,648 human-labelled contacts, filmed under conditions no published benchmark uses. No single paradigm wins every stage, and static, single-frame computer vision is not competitive at any stage involving motion or identity. A prompted model segments matches well, yet a far smaller trained model beats it at spotting contacts for a fraction of the cost, and the sport's own rules recover rally outcomes the pixels cannot. Identity is where every automated approach struggles: a jersey number is a static fact temporal reasoning cannot recover if never visible, unlike sporting action, a repeated motor pattern a temporal model can exploit, which is why holistic reasoning improves event detection while identity stays unchanged. We close with where each approach earns its cost, and what transfers beyond volleyball to amateur sport.",
+    "html_url": "https://arxiv.org/abs/2609.28049v1",
+    "pdf_url": "https://arxiv.org/pdf/2609.28049v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": [],
+    "_track": "related"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.27165v1",
+    "title": "Count Evidence, Not Sentences: Tempered Evidence Fusion of LLM Judgments for Long-Text Value Measurement",
+    "authors": [
+      "Yuhe Wu",
+      "Rui Qian",
+      "Guangyu Wang",
+      "Yuran Chen",
+      "Yuanchao Zhu",
+      "Junjie Yang",
+      "Zhengheng Li",
+      "Jiulin Cai",
+      "Tianyi Zhang",
+      "Zihan Dong",
+      "Jiaxin Liu",
+      "Yujie Chen",
+      "Guang Zhang"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "published": "2026-09-22T23:52:38+00:00",
+    "updated": "2026-09-22T23:52:38+00:00",
+    "comments": "Yuhe Wu, Rui Qian, and Guangyu Wang contributed equally. Corresponding author: Guang Zhang. See also: https://github.com/Kzczc/ICASSP2027-TEF",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Large language models (LLMs) are increasingly used to measure public value orientations from long social media posts, yet such posts often mix background, quotations, concessions, and only a few stance-bearing sentences. Existing approaches either ask the model to predict a document-level label directly, which can be overconfident, or aggregate sentence-level predictions by majority or soft voting, which treat uncertain and decisive sentences as equally informative. We formulate long-text value measurement as a decision-fusion problem and propose Tempered Evidence Fusion (TEF), a training-free rule that weights each sentence's log-odds by its normalized information gain, as derived from a generalized Bayesian posterior. This makes the fused score nearly vanish for uncertain sentences while preserving the Bayes-optimal weight of decisive evidence. We further introduce Multi-event Insight Network Dimensions (MIND), a benchmark of 8,358 Chinese and English posts spanning five years of public events and six value dimensions. On MIND, TEF outperforms the strongest baseline among Direct, Majority Vote, and Soft Vote by an average of 4.5 accuracy points and 4.6 macro-F1 points across five LLMs and two languages. MIND dataset and code are available at https://github.com/Kzczc/ICASSP2027-TEF.",
+    "html_url": "https://arxiv.org/abs/2609.27165v1",
+    "pdf_url": "https://arxiv.org/pdf/2609.27165v1",
+    "code_urls": [
+      "https://github.com/Kzczc/ICASSP2027-TEF",
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": [],
+    "_track": "related"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.27155v1",
+    "title": "The Like Trap: Multi-Stage Poisoning against Agents in Similarity-based Recommendation Systems",
+    "authors": [
+      "Yue Xing",
+      "Pengfei He",
+      "Zitao Li"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.CR",
+      "cs.AI",
+      "cs.LG",
+      "stat.ML"
+    ],
+    "published": "2026-09-22T23:39:24+00:00",
+    "updated": "2026-09-22T23:39:24+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "With recent advancements in large language models (LLMs) and LLM-based agents, these agents are becoming increasingly autonomous and gaining broader access to act on users' behalf on the internet. However, the vulnerability of automated agents deployed on social media platforms (e.g., for managing a user's personal account) remains underexplored. Existing studies on agent poisoning typically assume that the adversary can expose poisoned content to the agent. Although such an attack is direct and effective, it is more easily detected and mitigated. In the context of social media platforms, this leaves open whether the recommendation system itself would surface such content to the agent in a more subtle manner. Through theoretical analysis, we show that the like-score mechanism used in OASIS can be exploited, and we characterize the conditions under which a multi-stage chain of poisoned posts can steer the agent's feed. Based on these insights, we further develop an algorithm that crafts realistic poisoned posts. Experiments support our theoretical findings and demonstrate the effectiveness of the proposed algorithm. Notably, by exploiting the like-score feedback loop, the attack causes the recommendation system to select poisoned posts even when their user-post similarity falls below the retrieval threshold.",
+    "html_url": "https://arxiv.org/abs/2609.27155v1",
+    "pdf_url": "https://arxiv.org/pdf/2609.27155v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": [],
+    "_track": "related"
+  }
+]
