@@ -1,0 +1,31 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2609.29230v1",
+    "title": "EAGER: Enhancing Generative Event Extraction via Reinforcement Learning with Verifiable Rewards",
+    "authors": [
+      "Omar Adjali",
+      "Siting Liang",
+      "Omair Shahzad Bhatti",
+      "Daniel Sonntag"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.CL"
+    ],
+    "published": "2026-09-24T08:37:46+00:00",
+    "updated": "2026-09-24T08:37:46+00:00",
+    "comments": "Accepted to EMNLP 2026 Findings",
+    "journal_ref": null,
+    "venue_inferred": "EMNLP 2026",
+    "summary": "End-to-end event extraction remains challenging for large language models as it requires simultaneous identification of event triggers, classification of event types, and extraction of schema-grounded argument spans. We present EAGER, a reinforcement learning framework for generative event extraction that combines fine-grained verifiable rewards with Schema-Contrastive Advantage Estimation to alleviate advantage collapse under sparse binary rewards. Our reward design explicitly targets structural validity, extraction accuracy, groundedness, coverage, over-generation, and span precision. Experiments across seven benchmark datasets show that EAGER consistently outperforms prompting, supervised fine-tuning, and prior reinforcement learning baselines, achieving a substantial improvement over the strongest prior method. Results demonstrate that task-aligned verifiable rewards and contrastive advantage estimation substantially improve structured extraction.",
+    "html_url": "https://arxiv.org/abs/2609.29230v1",
+    "pdf_url": "https://arxiv.org/pdf/2609.29230v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": [],
+    "_track": "related"
+  }
+]
