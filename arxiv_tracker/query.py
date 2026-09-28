@@ -4,9 +4,8 @@ from __future__ import annotations
 import re
 from typing import List, Optional
 
-# Search title + abstract only.  This keeps arXiv queries compact and relevant.
-# The previous version also searched comments and generated space/hyphen variants,
-# which made the query string several kilobytes long.
+# Search title + abstract only. This avoids comment-field noise and keeps the
+# arXiv query compact enough to avoid oversized URLs / HTTP 400 errors.
 FIELDS = ("ti", "abs")
 
 
@@ -44,9 +43,7 @@ def _keywords_group(keywords: List[str]) -> str:
 
 
 def _exclude_suffix(exclude_keywords: Optional[List[str]]) -> str:
-    """
-    arXiv's documented boolean exclusion operator is ANDNOT (not "AND NOT").
-    """
+    """arXiv uses ANDNOT for boolean exclusion."""
     group = _keywords_group(exclude_keywords or [])
     if not group:
         return ""
@@ -59,13 +56,7 @@ def build_search_query(
     exclude_keywords: Optional[List[str]] = None,
     logic: str = "AND",
 ) -> str:
-    """
-    Build the Core / Social Event Detection query.
-
-    categories are OR-ed together.
-    keywords are OR-ed together.
-    logic controls how the two groups are connected.
-    """
+    """Build the strict Core / Social Event Detection query."""
     cat_q = _category_group(categories)
     key_q = _keywords_group(keywords)
 
@@ -86,7 +77,8 @@ def build_related_search_query(
     categories: List[str],
     direct_keywords: List[str],
     method_keywords: List[str],
-    context_keywords: List[str],
+    social_context_keywords: List[str],
+    event_context_keywords: List[str],
     exclude_keywords: Optional[List[str]] = None,
 ) -> str:
     """
@@ -97,22 +89,30 @@ def build_related_search_query(
         categories AND (
             direct_related_keywords
             OR
-            (method_keywords AND context_keywords)
+            (
+                method_keywords
+                AND social_media_context
+                AND event_or_topic_context
+            )
         )
 
-    Broad methods such as LLM/RAG/GNN are therefore not searched alone.
-    They must occur together with an event/social-media context term.
+    The extra context split is deliberate. A paper is not admitted merely
+    because it says "LLM + event detection" or "GNN + social network".
+    Broad methods must be tied to BOTH social-media data and event/topic work.
     """
     cat_q = _category_group(categories)
     direct_q = _keywords_group(direct_keywords)
     method_q = _keywords_group(method_keywords)
-    context_q = _keywords_group(context_keywords)
+    social_q = _keywords_group(social_context_keywords)
+    event_q = _keywords_group(event_context_keywords)
 
     parts: List[str] = []
+
     if direct_q:
         parts.append(direct_q)
-    if method_q and context_q:
-        parts.append(f"({method_q} AND {context_q})")
+
+    if method_q and social_q and event_q:
+        parts.append(f"({method_q} AND {social_q} AND {event_q})")
 
     related_q = "(" + " OR ".join(parts) + ")" if parts else ""
 
