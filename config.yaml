@@ -1,21 +1,29 @@
 # ==========================================================
 # arXiv categories
 # ==========================================================
-# cs.CL: Computation and Language
-# cs.SI: Social and Information Networks
-# cs.AI: Artificial Intelligence
-# cs.LG: Machine Learning
-# cs.CV: Computer Vision (for multimodal/event-related work)
+# Core track avoids cs.CV because "social event detection" in CV often means
+# recognizing weddings / sports / parties in images rather than detecting
+# events from social-media streams.
 categories:
   - "cs.CL"
   - "cs.SI"
   - "cs.AI"
   - "cs.LG"
+
+# Related track may be broader. cs.CV is allowed here because the LLM
+# relevance filter below will remove visual-event / event-camera noise.
+related_categories:
+  - "cs.CL"
+  - "cs.SI"
+  - "cs.AI"
+  - "cs.LG"
+  - "cs.IR"
   - "cs.CV"
 
 # ==========================================================
 # Track 1: Core — Social Event Detection
 # ==========================================================
+# Keep only phrases that strongly indicate the actual SED task.
 keywords:
   - "social event detection"
   - "social media event detection"
@@ -38,24 +46,22 @@ keywords:
 # ==========================================================
 # Track 2: Related Research
 # ==========================================================
-# A) These phrases are sufficiently close to SED to be searched directly.
+# A) Direct phrases: broad enough to discover adjacent work, but still tied
+#    to social media / social streams.
 related_keywords:
-  - "multimodal event detection"
-  - "multimodal event extraction"
   - "social media event extraction"
-  - "event extraction"
-  - "event discovery"
-  - "emerging event detection"
-  - "online event detection"
-  - "streaming event detection"
-  - "event clustering"
-  - "event evolution"
-  - "topic detection and tracking"
-  - "topic discovery"
-  - "emerging topic detection"
+  - "social media event discovery"
+  - "social media event evolution"
+  - "multimodal social media event detection"
+  - "multimodal social media event extraction"
+  - "emerging event detection in social media"
+  - "online event detection in social media"
+  - "streaming event detection in social media"
+  - "topic detection and tracking in social media"
+  - "topic discovery in social media"
+  - "emerging topic detection in social media"
 
-# B) These are broader methods. They are NOT searched alone.
-# They must co-occur with at least one related_context_keywords phrase.
+# B) Broad methods are NEVER searched alone.
 related_method_keywords:
   - "large language model"
   - "LLM"
@@ -64,37 +70,59 @@ related_method_keywords:
   - "temporal graph neural network"
   - "dynamic graph neural network"
   - "heterogeneous graph neural network"
+  - "graph neural network"
   - "graph clustering"
   - "online clustering"
   - "streaming clustering"
   - "contrastive learning"
   - "multimodal large language model"
   - "vision language model"
+  - "structural entropy"
+  - "hyperbolic representation"
 
-# C) Context anchors for the broad methods above.
-related_context_keywords:
+# C) A broad method must co-occur with BOTH one social-media anchor
+#    and one event/topic anchor.
+related_social_context_keywords:
   - "social media"
   - "social network"
+  - "online social network"
   - "microblog"
+  - "twitter"
+  - "tweet"
+  - "weibo"
+  - "reddit"
+  - "user-generated content"
+
+related_event_context_keywords:
   - "event detection"
-  - "event extraction"
   - "event discovery"
+  - "event extraction"
   - "event clustering"
+  - "event evolution"
   - "topic detection"
   - "topic discovery"
+  - "emerging event"
+  - "emerging topic"
 
-# Optional exclusions. Keep empty unless you observe systematic noise.
-exclude_keywords: []
+# Query-level exclusions for very stable, clearly irrelevant meanings of
+# "event detection". The LLM filter below performs the finer semantic check.
+exclude_keywords:
+  - "event camera"
+  - "event-based vision"
+  - "neuromorphic vision"
+  - "sound event detection"
+  - "acoustic event detection"
+  - "audio event detection"
 
 # categories group AND keyword group
 logic: "AND"
 
-# Daily quota: prefer the core direction, but reserve slots for related work.
+# Final email quota. The program fetches more candidates before semantic
+# filtering, then keeps at most these numbers.
 max_results: 10
 core_max_results: 7
 related_max_results: 3
 
-# For a "new paper" tracker, submittedDate is safer than lastUpdatedDate.
 sort_by: "submittedDate"
 sort_order: "descending"
 
@@ -102,11 +130,66 @@ sort_order: "descending"
 lang: "both"
 
 # ==========================================================
+# LLM semantic relevance filter
+# ==========================================================
+relevance_filter:
+  enabled: true
+
+  # Fetch 3x the final quota before semantic filtering, so removing noise does
+  # not leave the email almost empty.
+  candidate_multiplier: 3
+
+  # Final acceptance thresholds after LLM classification.
+  core_threshold: 0.78
+  related_threshold: 0.70
+
+  # If the relevance API is temporarily unavailable, keep candidates instead
+  # of silently losing new papers. Set false if you prefer strict fail-closed.
+  fail_open: true
+
+  # Deterministic pre-filter. These are checked against title + abstract before
+  # calling the LLM, which reduces token usage and obvious noise.
+  hard_noise_keywords:
+    - "event camera"
+    - "event-based vision"
+    - "neuromorphic vision"
+    - "sound event detection"
+    - "acoustic event detection"
+    - "audio event detection"
+    - "temporal action localization"
+    - "human action recognition"
+    - "video anomaly detection"
+    - "clinical event detection"
+    - "medical event detection"
+    - "financial event detection"
+    - "sensor event detection"
+
+  system_prompt: |
+    You are a strict academic relevance classifier for Social Event Detection (SED).
+
+    The target research problem is: detecting, discovering, clustering, tracking,
+    evolving, or extracting real-world events from social-media / social-network /
+    microblog / user-generated streams, including online, incremental, unsupervised,
+    open-world, multimodal, graph-based, LLM/RAG-based, and event-evolution settings.
+
+    Label a paper as:
+    - core: its main task is directly Social Event Detection or Social Media Event Detection.
+    - related: it is not directly SED, but its main task/method is clearly transferable to
+      SED, AND it is still about social-media/social-network streams plus events/topics.
+    - noise: it uses the word "event" in a different meaning/domain or is only weakly related.
+
+    Typical noise includes event cameras, event-based vision, image/video activity recognition,
+    sound/acoustic events, medical/clinical events, finance events, cybersecurity events,
+    generic sensor events, and generic event extraction with no social-media/event-stream context.
+
+    Be conservative. Do not keep a paper merely because it contains one matching keyword.
+
+# ==========================================================
 # Summary
 # ==========================================================
 summary:
-  mode: "llm"       # none / heuristic / llm
-  scope: "both"     # tldr / full / both
+  mode: "llm"
+  scope: "both"
 
 # ==========================================================
 # Email (QQ Mail)
@@ -117,9 +200,9 @@ email:
   smtp_server: "smtp.qq.com"
   smtp_port: 465
   smtp_pass_env: "SMTP_PASS"
-  tls: "ssl"        # auto / ssl / starttls
+  tls: "ssl"
   debug: false
-  detail: "full"    # simple / full
+  detail: "full"
   max_items: 10
   attach_md: true
   attach_pdf: false
@@ -160,27 +243,19 @@ site:
   dir: "docs"
   title: "arXiv 论文速递"
   keep_runs: 1024
-  theme: "light"        # light / dark / auto
+  theme: "light"
   accent: "#2563eb"
 
 # ==========================================================
 # Freshness + cross-day dedup
 # ==========================================================
 freshness:
-  # Search recent papers, then rely on seen.json to avoid resending them.
-  # 3 days is enough for a daily job while tolerating arXiv/API timing differences.
-  since_days: 3
-
-  # Cross-day deduplication.
+  # Seven-day retrieval window tolerates arXiv/API timing differences; seen.json
+  # still guarantees that successfully emailed papers are not resent.
+  since_days: 7
   unique_only: true
   state_path: ".state/seen.json"
-
-  # Never refill an empty day with old papers.
   fallback_when_empty: false
-
-  # false is recommended for this email-first workflow:
-  # a manual --no-email/site-only test will NOT consume papers from the email queue.
-  # When email is enabled, papers are marked seen only after successful email delivery.
   mark_seen_on_site: false
 
 # ==========================================================
